@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Selçuk Kütük Kişisel Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://selcukkutuk.com/"/>
+  <updated>2019-05-12T00:13:17.279Z</updated>
+  <id>http://selcukkutuk.com/</id>
+  
+  <author>
+    <name>Selçuk Kütük</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Yine Yeni Yeniden</title>
+    <link href="http://selcukkutuk.com/2019/05/12/yine-yeni-yeniden/"/>
+    <id>http://selcukkutuk.com/2019/05/12/yine-yeni-yeniden/</id>
+    <published>2019-05-12T00:04:46.000Z</published>
+    <updated>2019-05-12T00:13:17.279Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Yine&quot;&gt;&lt;a href=&quot;#Yine&quot; class=&quot;headerlink&quot; title=&quot;Yine&quot;&gt;&lt;/a&gt;Yine&lt;/h4&gt;&lt;p&gt;Aktarmaya başlamalı!&lt;/p&gt;
+&lt;h4 id=&quot;Yeni&quot;&gt;&lt;a href=&quot;#Yeni&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
