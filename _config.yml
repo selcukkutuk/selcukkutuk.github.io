@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Selçuk Kütük Kişisel Blog
 subtitle:
 description:
 keywords:
-author: John Doe
-language:
+author: Selçuk Kütük
+language: tr
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://selcukkutuk.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -22,8 +22,8 @@ permalink_defaults:
 source_dir: source
 public_dir: public
 tag_dir: tags
-archive_dir: archives
-category_dir: categories
+archive_dir: arsiv
+category_dir: kategoriler
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -54,7 +54,7 @@ index_generator:
   order_by: -date
   
 # Category & Tag
-default_category: uncategorized
+default_category: kategorilenmemis
 category_map:
 tag_map:
 
@@ -82,3 +82,13 @@ deploy:
   repo: https://github.com/selcukkutuk/selcukkutuk.github.io
   branch: master
 
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png

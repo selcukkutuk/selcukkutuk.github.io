@@ -1,11 +1,12 @@
 # Header
 menu:
-  Home: /
-  Archives: /archives
+  Ana Sayfa: /
+  Ben Kimim: /benkimim
+  Arşiv: /arsiv
 rss: /atom.xml
 
 # Content
-excerpt_link: Read More
+excerpt_link: Daha fazla...
 fancybox: true
 
 # Sidebar
