@@ -82,6 +82,7 @@ deploy:
   repo: https://github.com/selcukkutuk/selcukkutuk.github.io
   branch: master
 
+#Custom
 feed:
   type: atom
   path: atom.xml
@@ -92,3 +93,6 @@ feed:
   content_limit_delim: ' '
   order_by: -date
   icon: icon.png
+
+comments: true
+disqus_shortname: selcukkutuk
