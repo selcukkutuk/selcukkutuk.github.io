@@ -4,7 +4,7 @@ date: 2019-05-15 14:33:05
 tags:
 ---
 
-![](http://localhost:4000/2019/05/15/stencil-e-giris/stencil_logo.png)
+![](https://cdn-images-1.medium.com/max/1000/1*KtY9DFv1P2mC5JDWrgdeOQ.png)
 
 ### **Nedir?**
 
