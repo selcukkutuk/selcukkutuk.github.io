@@ -3,14 +3,14 @@ title: Ben Kimim ?
 date: 2019-05-12 02:45:20
 ---
 
-#### Özet
+#### **Özet**
 Kısa bir özet
 
-#### Eğitim Hayatım
+#### **Eğitim Hayatım**
 Eğitim bilgileri
 
-#### İş Deneyimlerim
+#### **İş Deneyimlerim**
 İş deneyimleri ile ilgili bilgiler
 
-#### Hedeflerim
+#### **Hedeflerim**
 Kariyerimde ulaşmak istedilerim

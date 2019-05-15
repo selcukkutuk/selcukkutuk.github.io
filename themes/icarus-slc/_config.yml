@@ -95,8 +95,8 @@ comment:
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Share-Plugins
 share:
     # Share plugin name
-    type: addthis
-    install_url: //s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f6ba7b42d1bbea5
+    type: sharethis
+    install_url: //platform-api.sharethis.com/js/sharethis.js#property=5cdc78eb6340bc001251d3fc&product=social-ab
 # Sidebar settings.
 # Please be noted that a sidebar is only visible when it has at least one widget
 sidebar:
