@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
-  <updated>2019-05-15T16:02:52.731Z</updated>
+  <updated>2019-05-15T16:06:08.799Z</updated>
   <id>http://selcukkutuk.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://selcukkutuk.com/2019/05/15/stencil-e-giris/"/>
     <id>http://selcukkutuk.com/2019/05/15/stencil-e-giris/</id>
     <published>2019-05-15T11:33:05.000Z</published>
-    <updated>2019-05-15T16:02:52.731Z</updated>
+    <updated>2019-05-15T16:06:08.799Z</updated>
     
     <summary type="html">
     
@@ -36,35 +36,16 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Yine Yeni Yeniden</title>
-    <link href="http://selcukkutuk.com/2019/05/12/yine-yeni-yeniden/"/>
-    <id>http://selcukkutuk.com/2019/05/12/yine-yeni-yeniden/</id>
-    <published>2019-05-12T00:04:46.000Z</published>
-    <updated>2019-05-15T16:02:32.540Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;Yine&quot;&gt;&lt;a href=&quot;#Yine&quot; class=&quot;headerlink&quot; title=&quot;Yine&quot;&gt;&lt;/a&gt;Yine&lt;/h4&gt;&lt;p&gt;Aktarmaya başlamalı!&lt;/p&gt;
-&lt;h4 id=&quot;Yeni&quot;&gt;&lt;a href=&quot;#Yeni&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Diğer" scheme="http://selcukkutuk.com/kategoriler/Diger/"/>
+      <category term="Web Components" scheme="http://selcukkutuk.com/kategoriler/Web-Components/"/>
     
     
-      <category term="içimden" scheme="http://selcukkutuk.com/tags/icimden/"/>
+      <category term="stenciljs" scheme="http://selcukkutuk.com/tags/stenciljs/"/>
     
-      <category term="gelen" scheme="http://selcukkutuk.com/tags/gelen/"/>
+      <category term="stencil" scheme="http://selcukkutuk.com/tags/stencil/"/>
+    
+      <category term="web components" scheme="http://selcukkutuk.com/tags/web-components/"/>
+    
+      <category term="custom elements" scheme="http://selcukkutuk.com/tags/custom-elements/"/>
     
   </entry>
   
