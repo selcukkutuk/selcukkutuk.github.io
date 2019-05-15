@@ -15,7 +15,7 @@ tags:
 ### **Nedir?**
 
 [Stencil](https://stenciljs.com) Ionic ekibi tarafından geliştirilen native web bileşenleri oluşturmak için hazırlanan bir araçtır. Bunun yanında sanal dom, reaktif veri aktarımı Typescript ve JSX gibi güçlü özellikleri ile uzun vade de oldukça iddialı ve umut verici görünüyor. İlk olarak [Polymer Summit 2017](https://www.youtube.com/watch?v=UfD-k7aHkQE) de duyurulan Stencil ben de dahil olmak üzere bir çok kişinin ilgisini çekmiş gibi görünüyor. Bu yazı ile kısa bir giriş yaparak basit bir örnek uygulama hazırlayacağız.
-
+<!-- more -->
 ### **Neden?**
 
 Ekip Ionic bileşenlerinin bir sonraki sürümünü Stencil ile geliştirecek. Bu Ionic ile geliştirilmiş olan uygulamalara ciddi bir hız katacak ve aynı zamanda ciddi bir paket boyutu avantajı sağlayacak gibi görünüyor. Bunun yanı sıra Angular 4 ile Ionic uygulamarı geliştirmek hala mümkün olacak ve daha da önemlisi ve bana çok cazip gelen tarafı Angular 4 dışında Vue, React ve hatta saf Javascript ile ionic uygulamaları geliştirmek mümkün hale gelecek. Yani kısacası framework yada kütüphane bağımsız bir bileşen setine dönüşecek. Gerçekten kulağa çok hoş geliyor.
