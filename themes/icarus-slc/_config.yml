@@ -96,7 +96,7 @@ comment:
 share:
     # Share plugin name
     type: sharethis
-    install_url: //platform-api.sharethis.com/js/sharethis.js#property=5cdc78eb6340bc001251d3fc&product=social-ab
+    install_url: //platform-api.sharethis.com/js/sharethis.js#property=5cdc78eb6340bc001251d3fc&product=inline-share-buttons
 # Sidebar settings.
 # Please be noted that a sidebar is only visible when it has at least one widget
 sidebar:
