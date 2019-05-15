@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
-  <updated>2019-05-12T00:13:17.279Z</updated>
+  <updated>2019-05-15T16:02:52.731Z</updated>
   <id>http://selcukkutuk.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Stencil&#39;e Giriş</title>
+    <link href="http://selcukkutuk.com/2019/05/15/stencil-e-giris/"/>
+    <id>http://selcukkutuk.com/2019/05/15/stencil-e-giris/</id>
+    <published>2019-05-15T11:33:05.000Z</published>
+    <updated>2019-05-15T16:02:52.731Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1000/1*KtY9DFv1P2mC5JDWrgdeOQ.png&quot; alt&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Nedir&quot;&gt;&lt;a href=&quot;#Nedir&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Yine Yeni Yeniden</title>
     <link href="http://selcukkutuk.com/2019/05/12/yine-yeni-yeniden/"/>
     <id>http://selcukkutuk.com/2019/05/12/yine-yeni-yeniden/</id>
     <published>2019-05-12T00:04:46.000Z</published>
-    <updated>2019-05-12T00:13:17.279Z</updated>
+    <updated>2019-05-15T16:02:32.540Z</updated>
     
     <summary type="html">
     
@@ -36,6 +59,12 @@
     
     </summary>
     
+      <category term="Diğer" scheme="http://selcukkutuk.com/kategoriler/Diger/"/>
+    
+    
+      <category term="içimden" scheme="http://selcukkutuk.com/tags/icimden/"/>
+    
+      <category term="gelen" scheme="http://selcukkutuk.com/tags/gelen/"/>
     
   </entry>
   
