@@ -22,9 +22,9 @@ widget:
 article:
     more: 'Daha fazla oku'
     comments: 'Yorumlar'
-    read: 'read'
-    about: 'About'
-    words: 'words'
+    read: 'okuma süresi'
+    about: 'Yaklaşık'
+    words: 'kelime'
 search:
     search: 'Search'
     hint: 'Bir şeyler yaz...'

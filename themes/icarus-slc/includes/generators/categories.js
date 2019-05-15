@@ -4,7 +4,7 @@
 module.exports = function (hexo) {
     hexo.extend.generator.register('categories', function (locals) {
         return {
-            path: 'categories/',
+            path: 'kategoriler/',
             layout: ['categories'],
             data: Object.assign({}, locals, {
                 __categories: true

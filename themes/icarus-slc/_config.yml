@@ -1,7 +1,7 @@
 # Version of the Icarus theme that is currently used
 version: 2.3.0
 # Path or URL to the website's icon
-favicon: /images/favicon.svg
+favicon: /favicon.png
 # Path or URL to RSS atom.xml
 rss: 
 # Path or URL to the website's logo to be shown on the left of the navigation bar or footer
@@ -23,29 +23,29 @@ open_graph:
 navbar:
     # Navigation bar menu links
     menu:
-        Home: /
-        Archives: /archives
-        Categories: /categories
-        Tags: /tags
-        About: /about
+        Ana Sayfa: /
+        Ben Kimim?: /benkimim
+        Arşiv: /arsiv
+        Kategoriler: /kategoriler
+        Etiketler: /etiketler
     # Navigation bar links to be shown on the right
     links:
-        Download on GitHub:
-            icon: fab fa-github
-            url: 'http://github.com/ppoffice/hexo-theme-icarus'
+        # Download on GitHub:
+        #     icon: fab fa-github
+        #     url: 'http://github.com/ppoffice/hexo-theme-icarus'
 # Footer section link settings
 footer:
     # Links to be shown on the right of the footer section
-    links:
-        Creative Commons:
-            icon: fab fa-creative-commons
-            url: 'https://creativecommons.org/'
-        Attribution 4.0 International:
-            icon: fab fa-creative-commons-by
-            url: 'https://creativecommons.org/licenses/by/4.0/'
-        Download on GitHub:
-            icon: fab fa-github
-            url: 'http://github.com/ppoffice/hexo-theme-icarus'
+    # links:
+    #     Creative Commons:
+    #         icon: fab fa-creative-commons
+    #         url: 'https://creativecommons.org/'
+    #     Attribution 4.0 International:
+    #         icon: fab fa-creative-commons-by
+    #         url: 'https://creativecommons.org/licenses/by/4.0/'
+    #     Download on GitHub:
+    #         icon: fab fa-github
+    #         url: 'http://github.com/ppoffice/hexo-theme-icarus'
 # Article display settings
 article:
     # Code highlight theme
@@ -64,32 +64,33 @@ search:
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Comment-Plugins
 comment:
     # Name of the comment plugin
-    type: 
+    type: disqus
+    shortname: selcukkutuk
 # Donation entries
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Donation/
-donate:
-    -
-        # Donation entry name
-        type: alipay
-        # Qrcode image URL
-        qrcode: ''
-    -
-        # Donation entry name
-        type: wechat
-        # Qrcode image URL
-        qrcode: ''
-    -
-        # Donation entry name
-        type: paypal
-        # Paypal business ID or email address
-        business: ''
-        # Currency code
-        currency_code: USD
-    -
-        # Donation entry name
-        type: patreon
-        # URL to the Patreon page
-        url: ''
+# donate:
+#     -
+#         # Donation entry name
+#         type: alipay
+#         # Qrcode image URL
+#         qrcode: ''
+#     -
+#         # Donation entry name
+#         type: wechat
+#         # Qrcode image URL
+#         qrcode: ''
+#     -
+#         # Donation entry name
+#         type: paypal
+#         # Paypal business ID or email address
+#         business: ''
+#         # Currency code
+#         currency_code: USD
+#     -
+#         # Donation entry name
+#         type: patreon
+#         # URL to the Patreon page
+#         url: ''
 # Share plugin settings
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Share-Plugins
 share:
@@ -117,36 +118,39 @@ widgets:
         # Where should the widget be placed, left or right
         position: left
         # Author name to be shown in the profile widget
-        author: Your name
+        author: Selçuk Kütük
         # Title of the author to be shown in the profile widget
-        author_title: Your title
+        author_title: i don't know but i can learn
         # Author's current location to be shown in the profile widget
-        location: Your location
+        location: Turkey
         # Path or URL to the avatar to be shown in the profile widget
-        avatar: 
+        avatar: /avatar.png
         # Email address for the Gravatar to be shown in the profile widget
         gravatar: 
         # Whether to show avatar image rounded or square
-        avatar_rounded: false
+        avatar_rounded: true
         # Path or URL for the follow button
-        follow_link: 'http://github.com/ppoffice'
+        follow_link: 'https://github.com/selcukkutuk'
         # Links to be shown on the bottom of the profile widget
         social_links:
             Github:
                 icon: fab fa-github
-                url: 'http://github.com/ppoffice'
-            Facebook:
-                icon: fab fa-facebook
-                url: 'http://facebook.com'
+                url: 'https://github.com/selcukkutuk'
+            Medium:
+                icon: fab fa-medium
+                url: 'https://medium.com/@selcukkutuk'
+            Linkedin:
+                icon: fab fa-linkedin
+                url: 'https://linkedin.com/in/selcukkutuk'                
             Twitter:
                 icon: fab fa-twitter
-                url: 'http://twitter.com'
+                url: 'https://twitter.com/selcukkutuk'
             Dribbble:
                 icon: fab fa-dribbble
-                url: 'http://dribbble.com'
+                url: 'https://dribbble.com/selcukkutuk'
             RSS:
                 icon: fas fa-rss
-                url: /
+                url: /atom.xml
     -
         # Widget name
         type: toc
@@ -158,9 +162,9 @@ widgets:
         # Where should the widget be placed, left or right
         position: left
         # Links to be shown in the links widget
-        links:
-            Hexo: 'https://hexo.io'
-            PPOffice: 'https://github.com/ppoffice'
+        # links:
+        #     Hexo: 'https://hexo.io'
+        #     PPOffice: 'https://github.com/ppoffice'
     -
         # Widget name
         type: category
@@ -175,17 +179,17 @@ widgets:
         # Widget name
         type: recent_posts
         # Where should the widget be placed, left or right
-        position: right
+        position: left
     -
         # Widget name
         type: archive
         # Where should the widget be placed, left or right
-        position: right
+        position: left
     -
         # Widget name
         type: tag
         # Where should the widget be placed, left or right
-        position: right
+        position: left
 # Other plugin settings
 plugins:
     # Enable page animations
@@ -205,7 +209,7 @@ plugins:
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Google-Analytics
     google-analytics:
         # Google Analytics tracking id
-        tracking_id: 
+        tracking_id: UA-30109784-1
     # Baidu Analytics plugin settings
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Baidu-Analytics
     baidu-analytics:
