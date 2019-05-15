@@ -20,7 +20,7 @@ widget:
     tag_cloud: 'Etiket bulutu'
     catalogue: 'Katalog'
 article:
-    more: 'Daha fazla oku'
+    more: 'Devamını oku'
     comments: 'Yorumlar'
     read: 'okuma süresi'
     about: 'Yaklaşık'
