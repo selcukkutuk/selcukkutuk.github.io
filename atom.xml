@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
-  <updated>2019-05-15T16:06:08.799Z</updated>
+  <updated>2019-05-15T20:13:46.976Z</updated>
   <id>http://selcukkutuk.com/</id>
   
   <author>
@@ -21,18 +21,12 @@
     <link href="http://selcukkutuk.com/2019/05/15/stencil-e-giris/"/>
     <id>http://selcukkutuk.com/2019/05/15/stencil-e-giris/</id>
     <published>2019-05-15T11:33:05.000Z</published>
-    <updated>2019-05-15T16:06:08.799Z</updated>
+    <updated>2019-05-15T20:13:46.976Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1000/1*KtY9DFv1P2mC5JDWrgdeOQ.png&quot; alt&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Nedir&quot;&gt;&lt;a href=&quot;#Nedir&quot;
-        
-      
+      &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1000/1*KtY9DFv1P2mC5JDWrgdeOQ.png&quot; alt&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Nedir&quot;&gt;&lt;a href=&quot;#Nedir&quot; class=&quot;headerlink&quot; title=&quot;Nedir?&quot;&gt;&lt;/a&gt;&lt;strong&gt;Nedir?&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://stenciljs.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Stencil&lt;/a&gt; Ionic ekibi tarafından geliştirilen native web bileşenleri oluşturmak için hazırlanan bir araçtır. Bunun yanında sanal dom, reaktif veri aktarımı Typescript ve JSX gibi güçlü özellikleri ile uzun vade de oldukça iddialı ve umut verici görünüyor. İlk olarak &lt;a href=&quot;https://www.youtube.com/watch?v=UfD-k7aHkQE&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Polymer Summit 2017&lt;/a&gt; de duyurulan Stencil ben de dahil olmak üzere bir çok kişinin ilgisini çekmiş gibi görünüyor. Bu yazı ile kısa bir giriş yaparak basit bir örnek uygulama hazırlayacağız.&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
