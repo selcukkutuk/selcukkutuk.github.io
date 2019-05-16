@@ -5,9 +5,7 @@ categories:
  - Web Components
 tags:
  - stenciljs
- - stencil
  - web components
- - custom elements
 ---
 
 ![](https://cdn-images-1.medium.com/max/1000/1*KtY9DFv1P2mC5JDWrgdeOQ.png)
