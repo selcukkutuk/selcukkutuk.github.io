@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*VWfiCojQK8hEkpLrfyz2QQ.png">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*zCALNRycUtO1q9wq163FVg.png">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*EK7tA9bVlyHaGKAvcEjM3Q.gif">
-<meta property="og:updated_time" content="2019-05-17T18:03:26.687Z">
+<meta property="og:updated_time" content="2019-05-18T22:59:49.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stencil’de Bileşenler Arası Haberleşme">
 <meta name="twitter:description" content="Stencil aracının ne olduğuna bir önceki yazımda giriş seviyesinde değinmeye çalışmıştım. Şimdi biraz daha derinlerine inmeye çalışacağım. Bileşen temelli araçların hemen tümünde bileşenler arası hab">
@@ -209,7 +209,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 dakika okuma süresi (Yaklaşık 921 kelime)
+                    6 dakika okuma süresi (Yaklaşık 918 kelime)
                 </span>
                 
                 
@@ -245,7 +245,7 @@
 
 <h3 id="Alt-Bilesen’den-Ust-Bilesene-Child-to-Parent"><a href="#Alt-Bilesen’den-Ust-Bilesene-Child-to-Parent" class="headerlink" title="Alt Bileşen’den Üst Bileşene (Child to Parent)"></a><strong>Alt Bileşen’den Üst Bileşene (Child to Parent)</strong></h3><p>Mantığı basit olmasına karşın anlaşılması ilk haberleşme şekline göre biraz daha zordur. Öncelikle sorunu bir tanımlayalım. Bu haberleşmede amiyane tabirle bileşen elimizin altında değil. Aksi gibi elimizin üstünde :). Bu nedenle Alt bileşende gerçekleşen bir <strong>olaydan haberdar olmak</strong> ve varsa gerçekleşen olayın sonucunda oluşan değeri de elde etmek istiyoruz. İşte tam burada 3 yeni kavram karşımıza çıkıyor. @Event() ve @Listen() dekarator’ü, EventEmitter arayüzü.</p>
 <p><strong>@Event():</strong> Tanımlanacak değişkenin üst bileşenlere haber göndereceğini işaretlemeye yarayan dekarator. Örneğin, @Event() profileImageUpdated: EventEmitter;</p>
-<p><strong>EventEmitter:</strong> Tanımlanan değişkenin tipini ifade eder. İçerisinde bulunan emit methodu ile Üst bileşenlere haber ve gerekirse veri gönderir. Örneğin, profileImageUpdated.emit(‘<a href="http://localhost:3333/img/newprofileimg.jpeg’" target="_blank" rel="noopener">http://localhost:3333/img/newprofileimg.jpeg’</a>)</p>
+<p><strong>EventEmitter:</strong> Tanımlanan değişkenin tipini ifade eder. İçerisinde bulunan emit methodu ile Üst bileşenlere haber ve gerekirse veri gönderir. Örneğin, profImgUpd.emit(‘newprofileimg.jpeg’)</p>
 <p><strong>@Listen():</strong> Üst bileşende işaretlenen method ile Alt bileşendeki gerçekleşen bir olaydan haberdar olunmasını sağlayan dekarator. Örneğin, @Listen(‘profileImageUpdated’) showInfo(event: CustomEvent){console.log(event.detail)}</p>
 <p>O zaman ilk örneğimizi bu yeni konu ile genişletelim:</p>
 <blockquote>
