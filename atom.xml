@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Selçuk Kütük Kişisel Blog</title>
   
-  
+  <subtitle>i don&#39;t know but i can learn</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
@@ -34,11 +34,11 @@
       <category term="Web Components" scheme="http://selcukkutuk.com/kategoriler/Web-Components/"/>
     
     
-      <category term="stenciljs" scheme="http://selcukkutuk.com/tags/stenciljs/"/>
+      <category term="stenciljs" scheme="http://selcukkutuk.com/etiketler/stenciljs/"/>
     
-      <category term="web components" scheme="http://selcukkutuk.com/tags/web-components/"/>
+      <category term="web components" scheme="http://selcukkutuk.com/etiketler/web-components/"/>
     
-      <category term="bileşen iletişimi" scheme="http://selcukkutuk.com/tags/bilesen-iletisimi/"/>
+      <category term="bileşen iletişimi" scheme="http://selcukkutuk.com/etiketler/bilesen-iletisimi/"/>
     
   </entry>
   
@@ -59,9 +59,9 @@
       <category term="Web Components" scheme="http://selcukkutuk.com/kategoriler/Web-Components/"/>
     
     
-      <category term="stenciljs" scheme="http://selcukkutuk.com/tags/stenciljs/"/>
+      <category term="stenciljs" scheme="http://selcukkutuk.com/etiketler/stenciljs/"/>
     
-      <category term="web components" scheme="http://selcukkutuk.com/tags/web-components/"/>
+      <category term="web components" scheme="http://selcukkutuk.com/etiketler/web-components/"/>
     
   </entry>
   
