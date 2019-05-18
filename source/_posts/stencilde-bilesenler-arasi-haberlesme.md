@@ -76,7 +76,7 @@ Mantığı basit olmasına karşın anlaşılması ilk haberleşme şekline gör
 
 **@Event():** Tanımlanacak değişkenin üst bileşenlere haber göndereceğini işaretlemeye yarayan dekarator. Örneğin, @Event() profileImageUpdated: EventEmitter;
 
-**EventEmitter:** Tanımlanan değişkenin tipini ifade eder. İçerisinde bulunan emit methodu ile Üst bileşenlere haber ve gerekirse veri gönderir. Örneğin, profileImageUpdated.emit(‘http://localhost:3333/img/newprofileimg.jpeg’)
+**EventEmitter:** Tanımlanan değişkenin tipini ifade eder. İçerisinde bulunan emit methodu ile Üst bileşenlere haber ve gerekirse veri gönderir. Örneğin, profImgUpd.emit(‘newprofileimg.jpeg’)
 
 **@Listen():** Üst bileşende işaretlenen method ile Alt bileşendeki gerçekleşen bir olaydan haberdar olunmasını sağlayan dekarator. Örneğin, @Listen(‘profileImageUpdated’) showInfo(event: CustomEvent){console.log(event.detail)}
 
