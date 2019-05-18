@@ -4,9 +4,9 @@
 
 # Site
 title: Selçuk Kütük Kişisel Blog
-subtitle:
-description:
-keywords:
+subtitle: i don't know but i can learn
+description: Selçuk Kütük - Yazılım meraklısı ve amatör fotoğrafçı bir Orman Mühendisi'nin yazılım geliştirme deneyimleri.
+keywords: selcuk kutuk, selçuk kütük, software, development, c#, .net, js, vue, angular, stencil
 author: Selçuk Kütük
 language: tr
 timezone:
@@ -21,7 +21,7 @@ permalink_defaults:
 # Directory
 source_dir: source
 public_dir: public
-tag_dir: tags
+tag_dir: etiketler
 archive_dir: arsiv
 category_dir: kategoriler
 code_dir: downloads/code
