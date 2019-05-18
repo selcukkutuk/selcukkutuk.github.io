@@ -2,18 +2,28 @@
 <html lang="tr">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Selçuk Kütük Kişisel Blog</title>
+<title>Stencil’de Bileşenler Arası Haberleşme - Selçuk Kütük Kişisel Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Selçuk Kütük Kişisel Blog">
-<meta property="og:url" content="http://selcukkutuk.com/index.html">
+    <meta name="description" content="Stencil aracının ne olduğuna bir önceki yazımda giriş seviyesinde değinmeye çalışmıştım. Şimdi biraz daha derinlerine inmeye çalışacağım. Bileşen temelli araçların hemen tümünde bileşenler arası hab">
+<meta name="keywords" content="stenciljs,web components,bileşen iletişimi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stencil’de Bileşenler Arası Haberleşme">
+<meta property="og:url" content="http://selcukkutuk.com/2019/05/16/stencilde-bilesenler-arasi-haberlesme/index.html">
 <meta property="og:site_name" content="Selçuk Kütük Kişisel Blog">
+<meta property="og:description" content="Stencil aracının ne olduğuna bir önceki yazımda giriş seviyesinde değinmeye çalışmıştım. Şimdi biraz daha derinlerine inmeye çalışacağım. Bileşen temelli araçların hemen tümünde bileşenler arası hab">
 <meta property="og:locale" content="tr">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*JDAq9NYdpV5maeQ2jqzkyA.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*VWfiCojQK8hEkpLrfyz2QQ.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*zCALNRycUtO1q9wq163FVg.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*EK7tA9bVlyHaGKAvcEjM3Q.gif">
+<meta property="og:updated_time" content="2019-05-17T18:03:26.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Selçuk Kütük Kişisel Blog">
+<meta name="twitter:title" content="Stencil’de Bileşenler Arası Haberleşme">
+<meta name="twitter:description" content="Stencil aracının ne olduğuna bir önceki yazımda giriş seviyesinde değinmeye çalışmıştım. Şimdi biraz daha derinlerine inmeye çalışacağım. Bileşen temelli araçların hemen tümünde bileşenler arası hab">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1000/1*JDAq9NYdpV5maeQ2jqzkyA.png">
 
 
 
@@ -155,7 +165,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active" href="/">Ana Sayfa</a>
+                <a class="navbar-item" href="/">Ana Sayfa</a>
                 
                 <a class="navbar-item" href="/benkimim">Ben Kimim?</a>
                 
@@ -183,8 +193,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
-    <div class="card">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
         
@@ -209,24 +218,66 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/05/16/stencilde-bilesenler-arasi-haberlesme/">Stencil’de Bileşenler Arası Haberleşme</a>
+                Stencil’de Bileşenler Arası Haberleşme
             
         </h1>
         <div class="content">
             <center><br><img src="https://cdn-images-1.medium.com/max/1000/1*JDAq9NYdpV5maeQ2jqzkyA.png" alt><br></center>
 
 <p>Stencil aracının ne olduğuna <a href="https://medium.com/t%C3%BCrkiye/stencile-giri%C5%9F-41e90e37595d" target="_blank" rel="noopener">bir önceki yazımda</a> giriş seviyesinde değinmeye çalışmıştım. Şimdi biraz daha derinlerine inmeye çalışacağım. Bileşen temelli araçların hemen tümünde bileşenler arası haberleşme/etkileşim (component communication/interaction) önem arz eder. Bu nedenle değineceğim ilk konu bu olacak.</p>
+<a id="more"></a>
+<p>Stencil aracında bileşenler arasındaki haberleşme Üst Bileşenden Alt Bileşene (Parent to Child), Alt Bileşenden Üst Bileşene (Child to Parent) olmak üzere iki şekilde gerçekleşmektedir. Aşağıdaki hazırladığım görsel ile basit bir şekilde bu haberleşmeyi anlatmaya çalıştım.</p>
+<center><br><img src="https://cdn-images-1.medium.com/max/800/1*VWfiCojQK8hEkpLrfyz2QQ.png" alt="Bileşenler arası heberleşme"><br></center>
+
+<h3 id="Ust-Bilesen’den-Alt-Bilesene-Parent-to-Child"><a href="#Ust-Bilesen’den-Alt-Bilesene-Parent-to-Child" class="headerlink" title="Üst Bileşen’den Alt Bileşene (Parent to Child)"></a><strong>Üst Bileşen’den Alt Bileşene (Parent to Child)</strong></h3><p>Bileşenler arasındaki haberleşmenin en anlaşılır ve kolay olanıdır. Alt bileşen içerisinde bir <strong>@Prop()</strong> tanımlanır ve özellik olarak değer ataması yapılır. Basit bir örnek ile gösterecek olursak :</p>
+<blockquote>
+<p><strong>Not:</strong> Örnek dilini belki makaleyi yabancı okurlarda inceleyebilir diye affınıza sığınarak İngilizce tutmaya çalışacağım.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//*** profile-image.tsx</span></span><br><span class="line"><span class="hljs-meta">@Prop</span>() imageUrl: <span class="hljs-built_in">string</span> = <span class="hljs-string">''</span>;</span><br><span class="line">render()&#123;</span><br><span class="line"> <span class="hljs-keyword">return</span>(&lt;img src=&#123;<span class="hljs-keyword">this</span>.imageUrl&#125; alt=<span class="hljs-string">"My profile image"</span> /&gt;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//***</span></span><br></pre></td></tr></table></figure>
+<p>Alt bileşenimiz de <strong>imgUrl</strong> adında bir özellik alabileceğimizi belirtiyoruz. Ve gelen veriyi img tagının src’sine aktarıyoruz. Daha sonra bu bileşeni kullanacak olan profile bileşenini düzenliyoruz:</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//*** profile.tsx</span></span><br><span class="line"><span class="hljs-meta">@State</span>() currentUser: <span class="hljs-built_in">any</span> = &#123;</span><br><span class="line">name:<span class="hljs-string">'Selçuk Kütük'</span>,</span><br><span class="line">image:<span class="hljs-string">'http://localhost:3333/img/profileimg.jpeg'</span></span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line"><span class="hljs-keyword">return</span> (</span><br><span class="line"></span><br><span class="line">   &lt;div&gt;</span><br><span class="line">    &lt;h3&gt;Hello &#123;<span class="hljs-keyword">this</span>.currentUser.name&#125;&lt;<span class="hljs-regexp">/h3&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;hr /</span>&gt;</span><br><span class="line">    &lt;profile-image image-url=&#123;<span class="hljs-keyword">this</span>.currentUser.image&#125;&gt;&lt;<span class="hljs-regexp">/profile-image&gt;</span></span><br><span class="line"><span class="hljs-regexp"> )</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-comment">/***</span></span><br></pre></td></tr></table></figure>
+<p>Profile bileşenin içerisinde profile-image bileşenini kullanırken bu bileşenin image-url özelliğine profile bileşeninde bulunan currentUser nesnesinin image özelliğini gönderiyoruz.</p>
+<blockquote>
+<p><strong>Not:</strong> Süslü parantez (curly braces) “{}” JSX söz diziminde Javascript’e geçtiğinizi belirtmek için kullanılır. Böylece bileşen içerisinde yer alan bir değişkenin değerini bir html özelliğine aktarabiliriz.</p>
+</blockquote>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">profile</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<center><br><img src="https://cdn-images-1.medium.com/max/800/1*zCALNRycUtO1q9wq163FVg.png" alt="Elde edilecek yaklaşık sonuç"><br></center>
+
+<h3 id="Alt-Bilesen’den-Ust-Bilesene-Child-to-Parent"><a href="#Alt-Bilesen’den-Ust-Bilesene-Child-to-Parent" class="headerlink" title="Alt Bileşen’den Üst Bileşene (Child to Parent)"></a><strong>Alt Bileşen’den Üst Bileşene (Child to Parent)</strong></h3><p>Mantığı basit olmasına karşın anlaşılması ilk haberleşme şekline göre biraz daha zordur. Öncelikle sorunu bir tanımlayalım. Bu haberleşmede amiyane tabirle bileşen elimizin altında değil. Aksi gibi elimizin üstünde :). Bu nedenle Alt bileşende gerçekleşen bir <strong>olaydan haberdar olmak</strong> ve varsa gerçekleşen olayın sonucunda oluşan değeri de elde etmek istiyoruz. İşte tam burada 3 yeni kavram karşımıza çıkıyor. @Event() ve @Listen() dekarator’ü, EventEmitter arayüzü.</p>
+<p><strong>@Event():</strong> Tanımlanacak değişkenin üst bileşenlere haber göndereceğini işaretlemeye yarayan dekarator. Örneğin, @Event() profileImageUpdated: EventEmitter;</p>
+<p><strong>EventEmitter:</strong> Tanımlanan değişkenin tipini ifade eder. İçerisinde bulunan emit methodu ile Üst bileşenlere haber ve gerekirse veri gönderir. Örneğin, profileImageUpdated.emit(‘<a href="http://localhost:3333/img/newprofileimg.jpeg’" target="_blank" rel="noopener">http://localhost:3333/img/newprofileimg.jpeg’</a>)</p>
+<p><strong>@Listen():</strong> Üst bileşende işaretlenen method ile Alt bileşendeki gerçekleşen bir olaydan haberdar olunmasını sağlayan dekarator. Örneğin, @Listen(‘profileImageUpdated’) showInfo(event: CustomEvent){console.log(event.detail)}</p>
+<p>O zaman ilk örneğimizi bu yeni konu ile genişletelim:</p>
+<blockquote>
+<p><strong>Not:</strong> Event, EventEmitter, Listen @stencil/core kütüphanesinde yer almaktadır. Dahil etmeyi unutmayın.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;Event, EventEmitter, Listen&#125; <span class="hljs-keyword">from</span> ‘<span class="hljs-meta">@stencil</span>/core’;</span><br></pre></td></tr></table></figure>
+<p>Şimdi profile-image bileşeninde ki işlemleri gerçekleştirelim.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//*** profile-image.tsx</span></span><br><span class="line"><span class="hljs-meta">@Prop</span>() imageUrl: <span class="hljs-built_in">string</span> = <span class="hljs-string">''</span>;</span><br><span class="line"><span class="hljs-meta">@Event</span>() profileImageUpdated: EventEmitter;</span><br><span class="line">updateProfileImage()&#123;</span><br><span class="line"> <span class="hljs-keyword">let</span> newProfileImageUrl = <span class="hljs-string">'...'</span>;</span><br><span class="line"> <span class="hljs-keyword">this</span>.profileImageUpdated(newProfileImageUrl);</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line"> <span class="hljs-keyword">return</span>(</span><br><span class="line">  &lt;button onClick=&#123;<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.updateProfileImage()&#125;&gt;Update&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;img src=&#123;this.imageUrl&#125; alt="My profile image" /</span>&gt;</span><br><span class="line"> )</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//***</span></span><br></pre></td></tr></table></figure>
+<p>Şimdi ise profile bileşeninde ki işlemleri gerçekleştirelim.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//*** profile.tsx</span></span><br><span class="line"><span class="hljs-meta">@State</span>() currentUser: <span class="hljs-built_in">any</span> = &#123;</span><br><span class="line">  name:<span class="hljs-string">'Selçuk Kütük'</span>,</span><br><span class="line">  image:<span class="hljs-string">'http://localhost:3333/img/profileimg.jpeg'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-meta">@State</span>() newProfileUrl: <span class="hljs-built_in">string</span> = <span class="hljs-string">''</span>;</span><br><span class="line"><span class="hljs-meta">@Listen</span>(<span class="hljs-string">'profileImageUpdated'</span>)</span><br><span class="line"></span><br><span class="line">profileImageUpdatedHandler(event: CustomEvent)&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.newProfileUrl = event.detail;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render()&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>.imageUrl !== <span class="hljs-string">''</span> &amp;&amp;</span><br><span class="line">      &lt;span&gt;</span><br><span class="line">        Profile image updated.</span><br><span class="line">        New image: &lt;img src=&#123;<span class="hljs-keyword">this</span>.newProfileUrl&#125; alt=<span class="hljs-string">"New image"</span> /&gt;</span><br><span class="line">      &lt;<span class="hljs-regexp">/span&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;h3&gt;Hello &#123;this.currentUser.name&#125;&lt;/</span>h3&gt;</span><br><span class="line">    &lt;hr /&gt;</span><br><span class="line">    &lt;profile-image image-url=&#123;<span class="hljs-keyword">this</span>.currentUser.img&#125;&gt;&lt;<span class="hljs-regexp">/profile-image&gt;</span></span><br><span class="line"><span class="hljs-regexp">  )</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-comment">/***</span></span><br></pre></td></tr></table></figure>
+<p>Şimdi haberleşmenin keyfini çıkaralım.</p>
+<center><br><img src="https://cdn-images-1.medium.com/max/800/1*EK7tA9bVlyHaGKAvcEjM3Q.gif" alt="Projenin bitmiş hali"><br></center>
+
+<p>Stencil yazı dizisinin ikincisinde bileşenler arasındaki haberleşmeyi ele almaya çalıştım. Bir sonraki konuda görüşmek üzere. Herkese iyi çalışmalar dilerim.</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/16/stencilde-bilesenler-arasi-haberlesme/#more">Devamını oku</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/bilesen-iletisimi/">bileşen iletişimi</a>, <a class="has-link-grey -link" href="/tags/stenciljs/">stenciljs</a>, <a class="has-link-grey -link" href="/tags/web-components/">web components</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5cdc78eb6340bc001251d3fc&amp;product=inline-share-buttons" async="async"></script>
+
         
     </div>
 </div>
@@ -235,62 +286,45 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/15/stencil-e-giris/">
+                <span class="level-item">Stencil&#39;e Giriş</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
-    <div class="card">
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Yorumlar</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://selcukkutuk.com/2019/05/16/stencilde-bilesenler-arasi-haberlesme/';
+        this.page.identifier = '2019/05/16/stencilde-bilesenler-arasi-haberlesme/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'selcukkutuk' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
     
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-15T11:33:05.000Z">15.05.2019</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 dakika okuma süresi (Yaklaşık 1278 kelime)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/15/stencil-e-giris/">Stencil&#39;e Giriş</a>
-            
-        </h1>
-        <div class="content">
-            <p><img src="https://cdn-images-1.medium.com/max/1000/1*KtY9DFv1P2mC5JDWrgdeOQ.png" alt></p>
-<h3 id="Nedir"><a href="#Nedir" class="headerlink" title="Nedir?"></a><strong>Nedir?</strong></h3><p><a href="https://stenciljs.com" target="_blank" rel="noopener">Stencil</a> Ionic ekibi tarafından geliştirilen native web bileşenleri oluşturmak için hazırlanan bir araçtır. Bunun yanında sanal dom, reaktif veri aktarımı Typescript ve JSX gibi güçlü özellikleri ile uzun vade de oldukça iddialı ve umut verici görünüyor. İlk olarak <a href="https://www.youtube.com/watch?v=UfD-k7aHkQE" target="_blank" rel="noopener">Polymer Summit 2017</a> de duyurulan Stencil ben de dahil olmak üzere bir çok kişinin ilgisini çekmiş gibi görünüyor. Bu yazı ile kısa bir giriş yaparak basit bir örnek uygulama hazırlayacağız.<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/15/stencil-e-giris/#more">Devamını oku</a>
-                </div>
-            </div>
-        </div>
-        
-        
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
-
-
-
-
-
-
-
-
 </div>
                 
 

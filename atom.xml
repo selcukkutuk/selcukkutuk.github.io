@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
-  <updated>2019-05-15T20:13:46.976Z</updated>
+  <updated>2019-05-17T18:03:26.687Z</updated>
   <id>http://selcukkutuk.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Stencil’de Bileşenler Arası Haberleşme</title>
+    <link href="http://selcukkutuk.com/2019/05/16/stencilde-bilesenler-arasi-haberlesme/"/>
+    <id>http://selcukkutuk.com/2019/05/16/stencilde-bilesenler-arasi-haberlesme/</id>
+    <published>2019-05-15T21:28:10.000Z</published>
+    <updated>2019-05-17T18:03:26.687Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;&lt;br&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1000/1*JDAq9NYdpV5maeQ2jqzkyA.png&quot; alt&gt;&lt;br&gt;&lt;/center&gt;
+
+&lt;p&gt;Stencil aracının ne olduğuna &lt;a href=&quot;https://medium.com/t%C3%BCrkiye/stencile-giri%C5%9F-41e90e37595d&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;bir önceki yazımda&lt;/a&gt; giriş seviyesinde değinmeye çalışmıştım. Şimdi biraz daha derinlerine inmeye çalışacağım. Bileşen temelli araçların hemen tümünde bileşenler arası haberleşme/etkileşim (component communication/interaction) önem arz eder. Bu nedenle değineceğim ilk konu bu olacak.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Web Components" scheme="http://selcukkutuk.com/kategoriler/Web-Components/"/>
+    
+    
+      <category term="stenciljs" scheme="http://selcukkutuk.com/tags/stenciljs/"/>
+    
+      <category term="web components" scheme="http://selcukkutuk.com/tags/web-components/"/>
+    
+      <category term="bileşen iletişimi" scheme="http://selcukkutuk.com/tags/bilesen-iletisimi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Stencil&#39;e Giriş</title>
     <link href="http://selcukkutuk.com/2019/05/15/stencil-e-giris/"/>
     <id>http://selcukkutuk.com/2019/05/15/stencil-e-giris/</id>
     <published>2019-05-15T11:33:05.000Z</published>
-    <updated>2019-05-15T20:13:46.976Z</updated>
+    <updated>2019-05-17T18:03:26.686Z</updated>
     
     <summary type="html">
     
@@ -35,11 +61,7 @@
     
       <category term="stenciljs" scheme="http://selcukkutuk.com/tags/stenciljs/"/>
     
-      <category term="stencil" scheme="http://selcukkutuk.com/tags/stencil/"/>
-    
       <category term="web components" scheme="http://selcukkutuk.com/tags/web-components/"/>
-    
-      <category term="custom elements" scheme="http://selcukkutuk.com/tags/custom-elements/"/>
     
   </entry>
   
