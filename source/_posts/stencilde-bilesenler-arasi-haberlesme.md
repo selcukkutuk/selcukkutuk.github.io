@@ -13,7 +13,7 @@ tags:
 ![](https://cdn-images-1.medium.com/max/1000/1*JDAq9NYdpV5maeQ2jqzkyA.png)
 </center>
 
-Stencil aracının ne olduğuna [bir önceki yazımda](https://medium.com/t%C3%BCrkiye/stencile-giri%C5%9F-41e90e37595d) giriş seviyesinde değinmeye çalışmıştım. Şimdi biraz daha derinlerine inmeye çalışacağım. Bileşen temelli araçların hemen tümünde bileşenler arası haberleşme/etkileşim (component communication/interaction) önem arz eder. Bu nedenle değineceğim ilk konu bu olacak.
+Stencil aracının ne olduğuna [bir önceki yazımda](https://selcukkutuk.com/2019/05/15/stencil-e-giris/) giriş seviyesinde değinmeye çalışmıştım. Şimdi biraz daha derinlerine inmeye çalışacağım. Bileşen temelli araçların hemen tümünde bileşenler arası haberleşme/etkileşim (component communication/interaction) önem arz eder. Bu nedenle değineceğim ilk konu bu olacak.
 
 <!-- more -->
 
