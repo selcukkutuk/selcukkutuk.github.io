@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
-  <updated>2019-11-24T20:45:11.347Z</updated>
+  <updated>2019-11-24T21:02:48.679Z</updated>
   <id>http://selcukkutuk.com/</id>
   
   <author>
@@ -21,17 +21,12 @@
     <link href="http://selcukkutuk.com/2019/11/24/stencil-bilesen-yasam-dongusu/"/>
     <id>http://selcukkutuk.com/2019/11/24/stencil-bilesen-yasam-dongusu/</id>
     <published>2019-11-24T09:29:56.000Z</published>
-    <updated>2019-11-24T20:45:11.347Z</updated>
+    <updated>2019-11-24T21:02:48.679Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;Giris&quot;&gt;&lt;a href=&quot;#Giris&quot; class=&quot;headerlink&quot; title=&quot;Giriş&quot;&gt;&lt;/a&gt;&lt;strong&gt;Giriş&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Yaşam döngüsü her framework yada library
-        
-      
+      &lt;!-- ![](../avatar.jpg) --&gt;
+&lt;h2 id=&quot;Giris&quot;&gt;&lt;a href=&quot;#Giris&quot; class=&quot;headerlink&quot; title=&quot;Giriş&quot;&gt;&lt;/a&gt;&lt;strong&gt;Giriş&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Toplamda 8 tane olan bu metotları aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
