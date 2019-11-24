@@ -11,7 +11,7 @@ tags:
 <!-- ![](../avatar.jpg) -->
 ## **Giriş**
 
-Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs'de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Toplamda 8 tane olan bu metotları aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.
+Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs'de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.
 <!-- more -->
 ### **connectedCallback()**
 
