@@ -8,7 +8,7 @@ tags:
   - web components
   - lifecycle methods
 ---
-<!-- ![](../avatar.jpg) -->
+![](https://cdn-images-1.medium.com/max/1000/1*ez1jFYb1jnH0xU3xAaQ7zg.png)
 ## **Giriş**
 
 Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs'de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.
