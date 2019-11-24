@@ -8,49 +8,58 @@ tags:
   - web components
   - lifecycle methods
 ---
-
+<!-- ![](../avatar.jpg) -->
 ## **Giriş**
 
 Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs'de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Toplamda 8 tane olan bu metotları aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.
+<!-- more -->
+### **connectedCallback()**
 
-- ### **connectedCallback()**
+Bu metot bileşen DOM'a her bağlandığında çalıştırılır. Bileşenin DOM'a her bağlandığında yapmasını istediğimiz işlemler burada yer alabilir.
 
-  Bu metot bileşen DOM'a her bağlandığında çalıştırılır. Bileşenin DOM'a her bağlandığında yapmasını istediğimiz işlemler burada yer alabilir.
+**Not:** Bileşen DOM'a ilk bağlandığında **connectedCallback()** metodu **componentWillLoad()** metodundan önce çağrılır. Uygulamada bir bileşenin çok kez DOM'a eklenebileceğini yada kaldırılabileceğini dolayısıyla bu metodun defalarca kez çağrılabileceğini unutmamak gerekir.
 
-  **Not:** Bileşen DOM'a ilk bağlandığında **connectedCallback()** metodu **componentWillLoad()** metodundan önce çağrılır. Uygulamada bir bileşenin çok kez DOM'a eklenebileceğini yada kaldırılabileceğini dolayısıyla bu metodun defalarca kez çağrılabileceğini unutmamak gerekir.
+### **disconnectedCallback()**
 
-- ### **disconnectedCallback()**
+Bu metot bileşenin DOM ile bağlantısı her kesildiğinde çağrılır. **connectedCallback()** metodunda olduğu gibi bir çok kez çağrılabileceğini unutmamak gerekir.
 
-  Bu metot bileşenin DOM ile bağlantısı her kesildiğinde çağrılır. **connectedCallback()** metodunda olduğu gibi bir çok kez çağrılabileceğini unutmamak gerekir.
+### **componentWillLoad()**
 
-- ### **componentWillLoad()**
-  Bileşen DOM'a ilk kez bağlandıktan hemen sonra çağrılır. Burada geriye bir **Promise** return edilerek ilk render işlemi bekletilebilir. Özellikle bileşenin oluşturulması için bir API'ye istek yapılması gerekiyorsa, işlem burada gerçekleştirilebilir.
-- ### **componentDidLoad()**
-  Bileşen DOM'a tam olarak yüklendikten ve render işlemi tamamlandıktan sonra bir kez çağrılır.
-- ### **componentWillRender()**
-  Her render işlemi öncesinde çağrılır. **componentWillLoad()** metodunda olduğu gibi geriye bir **Promise** return ederek render işlemi bekletilebilir.
-- ### **componentDidRender()**
-  Her render işlemi sonrasında çağrılır.
-- ### **componentWillUpdate()**
+Bileşen DOM'a ilk kez bağlandıktan hemen sonra çağrılır. Burada geriye bir **Promise** return edilerek ilk render işlemi bekletilebilir. Özellikle bileşenin oluşturulması için bir API'ye istek yapılması gerekiyorsa, işlem burada gerçekleştirilebilir.
 
-  Prop() veya State() değerleri değiştiğinde bileşen güncellenmeden hemen önce çağrılır. **componentWillLoad()** metodunda olduğu gibi geriye bir **Promise** return ederek render işlemi bekletilebilir.
+### **componentDidLoad()**
 
-  **Not:** Bileşen DOM'a ilk kez eklendiğinde bu metot çağrılmaz.
+Bileşen DOM'a tam olarak yüklendikten ve render işlemi tamamlandıktan sonra bir kez çağrılır.
 
-- ### **componentDidUpdate()**
+### **componentWillRender()**
 
-  Bileşen güncellendikten hemen sonra çağrılır.
+Her render işlemi öncesinde çağrılır. **componentWillLoad()** metodunda olduğu gibi geriye bir **Promise** return ederek render işlemi bekletilebilir.
 
-  **Not:** Bileşen DOM'a ilk kez eklendiğinde bu metot çağrılmaz.
+### **componentDidRender()**
 
-- ### **componentDidUnload()**
-  Bu metot bileşen DOM'dan kaldırıldığında çağrılır. Bileşen oluştuğunda örneğin **setInterval** ile bir timer oluşturduysanız bu metotda clearInterval ile gereksiz çalışmasına (bellek tüketmesine/sürpriz sonuçlar oluşturmasına) engel olabilirsiniz.
+Her render işlemi sonrasında çağrılır.
+
+### **componentWillUpdate()**
+
+Prop() veya State() değerleri değiştiğinde bileşen güncellenmeden hemen önce çağrılır. **componentWillLoad()** metodunda olduğu gibi geriye bir **Promise** return ederek render işlemi bekletilebilir.
+
+**Not:** Bileşen DOM'a ilk kez eklendiğinde bu metot çağrılmaz.
+
+### **componentDidUpdate()**
+
+Bileşen güncellendikten hemen sonra çağrılır.
+
+**Not:** Bileşen DOM'a ilk kez eklendiğinde bu metot çağrılmaz.
+
+### **componentDidUnload()**
+
+Bu metot bileşen DOM'dan kaldırıldığında çağrılır. Bileşen oluştuğunda örneğin **setInterval** ile bir timer oluşturduysanız bu metotda clearInterval ile gereksiz çalışmasına (bellek tüketmesine/sürpriz sonuçlar oluşturmasına) engel olabilirsiniz.
 
 ## **Farklı Senaryolarda Metotların Çalıştırılma Sırası**
 
 Diyelim bileşeniniz bütün yöntemleri içeriyor olsun. Bu bileşeni DOM'a eklediğinizde, DOM'dan kaldırdığınızda ve tekrar DOM'a eklediğinizde nasıl br sıralama oluyor aşağıdan inceleyelim.
 
-- ### **Bileşen DOM'a İlk Eklendiğinde**
+### **Bileşen DOM'a İlk Eklendiğinde**
 
   1. connectedCallback()
   2. componentWillLoad()
@@ -58,15 +67,16 @@ Diyelim bileşeniniz bütün yöntemleri içeriyor olsun. Bu bileşeni DOM'a ekl
   4. componentDidRender()
   5. componentDidLoad()
 
-- ### **Bileşen DOM'dan Kaldırıldığında**
+### **Bileşen DOM'dan Kaldırıldığında**
 
   1. disconnectedCallback()
+  2. componentDidUnload()
 
-- ### **Bileşen DOM'a İkinci Kez Eklendiğinde**
+### **Bileşen DOM'a İkinci Kez Eklendiğinde**
 
   1. connectedCallback()
 
-- ### **Bileşende Güncelleme Olduğunda**
+### **Bileşende Güncelleme Olduğunda**
   1. componentWillUpdate()
   2. componentWillRender()
   3. componentDidRender()
@@ -116,6 +126,7 @@ componentWillLoad() {
 Bileşenin **componentWillLoad()** metodu geriye bir Promise return ediyor. Dolayısıyla istek sonuçlanana kadar bileşen render edilmeyecek.
 
 ## Bitirirken
+
 Bu yazı ile stenciljs için önemli bir konu olan yaşam döngüsü metotlarını incelemeye çalıştım. Bir sonraki yazıda görüşmek üzere.
 
 ## Kaynaklar
