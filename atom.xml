@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
-  <updated>2019-11-24T22:12:31.974Z</updated>
+  <updated>2019-11-24T23:26:26.871Z</updated>
   <id>http://selcukkutuk.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://selcukkutuk.com/2019/11/24/stencil-bilesen-yasam-dongusu/"/>
     <id>http://selcukkutuk.com/2019/11/24/stencil-bilesen-yasam-dongusu/</id>
     <published>2019-11-24T09:29:56.000Z</published>
-    <updated>2019-11-24T22:12:31.974Z</updated>
+    <updated>2019-11-24T23:26:26.871Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](../avatar.jpg) --&gt;
+      &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1000/1*ez1jFYb1jnH0xU3xAaQ7zg.png&quot; alt&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Giris&quot;&gt;&lt;a href=&quot;#Giris&quot; class=&quot;headerlink&quot; title=&quot;Giriş&quot;&gt;&lt;/a&gt;&lt;strong&gt;Giriş&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.&lt;br&gt;&lt;/p&gt;
     
     </summary>
