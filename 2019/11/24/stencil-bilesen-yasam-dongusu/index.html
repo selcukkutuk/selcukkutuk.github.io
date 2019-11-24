@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Selçuk Kütük Kişisel Blog">
 <meta property="og:description" content="GirişYaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekir">
 <meta property="og:locale" content="tr">
-<meta property="og:updated_time" content="2019-11-24T21:02:48.679Z">
+<meta property="og:updated_time" content="2019-11-24T22:12:31.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stencil Bileşen Yaşam Döngüsü">
 <meta name="twitter:description" content="GirişYaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekir">
@@ -204,7 +204,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 dakika okuma süresi (Yaklaşık 1005 kelime)
+                    7 dakika okuma süresi (Yaklaşık 999 kelime)
                 </span>
                 
                 
@@ -218,7 +218,7 @@
         </h1>
         <div class="content">
             <!-- ![](../avatar.jpg) -->
-<h2 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a><strong>Giriş</strong></h2><p>Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Toplamda 8 tane olan bu metotları aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.<br><a id="more"></a></p>
+<h2 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a><strong>Giriş</strong></h2><p>Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.<br><a id="more"></a></p>
 <h3 id="connectedCallback"><a href="#connectedCallback" class="headerlink" title="connectedCallback()"></a><strong>connectedCallback()</strong></h3><p>Bu metot bileşen DOM’a her bağlandığında çalıştırılır. Bileşenin DOM’a her bağlandığında yapmasını istediğimiz işlemler burada yer alabilir.</p>
 <p><strong>Not:</strong> Bileşen DOM’a ilk bağlandığında <strong>connectedCallback()</strong> metodu <strong>componentWillLoad()</strong> metodundan önce çağrılır. Uygulamada bir bileşenin çok kez DOM’a eklenebileceğini yada kaldırılabileceğini dolayısıyla bu metodun defalarca kez çağrılabileceğini unutmamak gerekir.</p>
 <h3 id="disconnectedCallback"><a href="#disconnectedCallback" class="headerlink" title="disconnectedCallback()"></a><strong>disconnectedCallback()</strong></h3><p>Bu metot bileşenin DOM ile bağlantısı her kesildiğinde çağrılır. <strong>connectedCallback()</strong> metodunda olduğu gibi bir çok kez çağrılabileceğini unutmamak gerekir.</p>
