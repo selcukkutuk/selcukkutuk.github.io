@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
-  <updated>2019-05-19T00:11:21.957Z</updated>
+  <updated>2019-11-24T20:45:11.347Z</updated>
   <id>http://selcukkutuk.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Stencil Bileşen Yaşam Döngüsü</title>
+    <link href="http://selcukkutuk.com/2019/11/24/stencil-bilesen-yasam-dongusu/"/>
+    <id>http://selcukkutuk.com/2019/11/24/stencil-bilesen-yasam-dongusu/</id>
+    <published>2019-11-24T09:29:56.000Z</published>
+    <updated>2019-11-24T20:45:11.347Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Giris&quot;&gt;&lt;a href=&quot;#Giris&quot; class=&quot;headerlink&quot; title=&quot;Giriş&quot;&gt;&lt;/a&gt;&lt;strong&gt;Giriş&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Yaşam döngüsü her framework yada library
+        
+      
+    
+    </summary>
+    
+      <category term="Web Components" scheme="http://selcukkutuk.com/kategoriler/Web-Components/"/>
+    
+    
+      <category term="stenciljs" scheme="http://selcukkutuk.com/etiketler/stenciljs/"/>
+    
+      <category term="web components" scheme="http://selcukkutuk.com/etiketler/web-components/"/>
+    
+      <category term="lifecycle methods" scheme="http://selcukkutuk.com/etiketler/lifecycle-methods/"/>
+    
+  </entry>
   
   <entry>
     <title>Stencil’de Bileşenler Arası Haberleşme</title>
@@ -47,7 +77,7 @@
     <link href="http://selcukkutuk.com/2019/05/15/stencil-e-giris/"/>
     <id>http://selcukkutuk.com/2019/05/15/stencil-e-giris/</id>
     <published>2019-05-15T11:33:05.000Z</published>
-    <updated>2019-05-17T18:03:26.686Z</updated>
+    <updated>2019-11-24T09:31:49.796Z</updated>
     
     <summary type="html">
     
