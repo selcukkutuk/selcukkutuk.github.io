@@ -253,7 +253,7 @@ const axiosInstance = axios.create({
 Vue.prototype.$axios = axiosInstance;
 
 axiosInstance.interceptors.request.use(config => {
-  //Tabiki burada token değerini local yada session store gibi bir yerden okumamız gerekiyor :)
+  //Tabiki burada token değerini local yada session storage gibi bir yerden okumamız gerekebilir
   config.headers["Authorization"] = "Bearer eyxxxx";
   return config;
 });
