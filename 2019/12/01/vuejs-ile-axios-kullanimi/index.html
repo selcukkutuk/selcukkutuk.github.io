@@ -16,7 +16,7 @@
 <meta property="og:description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte \$http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıl">
 <meta property="og:locale" content="tr">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png">
-<meta property="og:updated_time" content="2019-12-01T16:46:48.109Z">
+<meta property="og:updated_time" content="2019-12-01T17:03:45.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VueJs ile Axios Kullanımı">
 <meta name="twitter:description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte \$http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıl">
@@ -206,7 +206,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 dakika okuma süresi (Yaklaşık 1100 kelime)
+                    7 dakika okuma süresi (Yaklaşık 1110 kelime)
                 </span>
                 
                 
@@ -245,7 +245,7 @@
 <h4 id="Response-Interceptor"><a href="#Response-Interceptor" class="headerlink" title="Response Interceptor"></a><strong>Response Interceptor</strong></h4><p>Buradaki örneğimizde ise mesela sunucudan cevap döndüğünde eğer bir hata var ise bir toast mesajı göstermek isteyebilirsiniz. Diğer bir örnek ise istek sonucunda 401 hata kodu aldığımızda token’ı yenilemek yada kullanıcıyı giriş sayfasına yönlendirmek isteyebiliriz. Çözüm işte tam burası.</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">"vue"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> axiosInstance = axios.create(&#123;</span><br><span class="line">  baseURL: <span class="hljs-string">"https://jsonplaceholder.typicode.com/"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Vue.prototype.$axios = axiosInstance;</span><br><span class="line"></span><br><span class="line">axiosInstance.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (config.status === <span class="hljs-number">401</span>) &#123;</span><br><span class="line">    alert(<span class="hljs-string">"Oturum süreniz sona erdi"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> config;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h3 id="Bitirirken"><a href="#Bitirirken" class="headerlink" title="Bitirirken"></a><strong>Bitirirken</strong></h3><p>Bu yazı ile vue ile axios kütüphanesinin en sık ihtiyaç duyulan bölümlerini ele almaya çalıştım. Gerçekten çok başarılı bir kütüphane olduğunu belirtmekte fayda var. Tüm yapılandırma seçeneklerini incelemek için github deposunu ziyaret etmekte fayda var. Herkese iyi çalışmalar dilerim.</p>
-<h3 id="Kaynaklar"><a href="#Kaynaklar" class="headerlink" title="Kaynaklar"></a><strong>Kaynaklar</strong></h3><ol>
+<h4 id="Ornek-Github-Adresi-https-github-com-selcukkutuk-vue-axios-examples"><a href="#Ornek-Github-Adresi-https-github-com-selcukkutuk-vue-axios-examples" class="headerlink" title="Örnek Github Adresi: https://github.com/selcukkutuk/vue-axios-examples"></a><strong>Örnek Github Adresi:</strong> <a href="https://github.com/selcukkutuk/vue-axios-examples" target="_blank" rel="noopener">https://github.com/selcukkutuk/vue-axios-examples</a></h4><h3 id="Kaynaklar"><a href="#Kaynaklar" class="headerlink" title="Kaynaklar"></a><strong>Kaynaklar</strong></h3><ol>
 <li><a href="https://github.com/axios/axios" target="_blank" rel="noopener">https://github.com/axios/axios</a></li>
 <li><a href="https://alligator.io/vuejs/rest-api-axios/" target="_blank" rel="noopener">https://alligator.io/vuejs/rest-api-axios/</a></li>
 </ol>
