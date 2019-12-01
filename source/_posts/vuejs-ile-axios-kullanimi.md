@@ -10,7 +10,7 @@ tags:
 ---
 ![](https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png)
 
-Çok az sayıda framework/library yerleşik bir http API'si bulundurur. Örneğin AngularJs ile birlikte **\$http**, Angular 2+ da ise **HttpModule** ve **HttpClientModule** (HttpModule Angular 9 ile tamamen kaldırılacak.), JQuery tarafında ise **\$.ajax** yerleşik olarak bulunuyordu. VueJs 2.0'a kadar ise benzer şekilde **vue-resource** ile işlemlerimizi yerleşik olarak yapabiliyorduk. Fakat VueJs ekibi bunun VueJs 2.0 ile birlikte ayrılması gerektiğine ve 3. parti kütüphanelerin buna daha iyi hizmet edebileceğine karar verdiler. Bunun için en çok önerilen ise **Axios**'tur.
+Çok az sayıda framework/library yerleşik bir http API'si bulundurur. Örneğin AngularJs ile birlikte **$http**, Angular 2+ da ise **HttpModule** ve **HttpClientModule** (HttpModule Angular 9 ile tamamen kaldırılacak.), JQuery tarafında ise **$.ajax** yerleşik olarak bulunuyordu. VueJs 2.0'a kadar ise benzer şekilde **vue-resource** ile işlemlerimizi yerleşik olarak yapabiliyorduk. Fakat VueJs ekibi bunun VueJs 2.0 ile birlikte ayrılması gerektiğine ve 3. parti kütüphanelerin buna daha iyi hizmet edebileceğine karar verdiler. Bunun için en çok önerilen ise **Axios**'tur.
 <!-- more -->
 Axios ile http işlemlerinizi çok basit ve etkili bir şekilde çözebilirsiniz. Varsayılan olarak Promise kullanır. Hem istemcide hemde sunucuda çalışır (SSR için uygun). VueJs ile kullanımı da oldukça basittir. Aynı zamanda async/await ile birlikte tertemiz bir kullanım sağlar. O zaman kurulum ile başlayalım incelemeye.
 
