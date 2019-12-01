@@ -285,6 +285,8 @@ axiosInstance.interceptors.response.use(config => {
 ### **Bitirirken**
 Bu yazı ile vue ile axios kütüphanesinin en sık ihtiyaç duyulan bölümlerini ele almaya çalıştım. Gerçekten çok başarılı bir kütüphane olduğunu belirtmekte fayda var. Tüm yapılandırma seçeneklerini incelemek için github deposunu ziyaret etmekte fayda var. Herkese iyi çalışmalar dilerim.
 
+#### **Örnek Github Adresi:** https://github.com/selcukkutuk/vue-axios-examples
+
 ### **Kaynaklar**
 1. https://github.com/axios/axios
 2. https://alligator.io/vuejs/rest-api-axios/
