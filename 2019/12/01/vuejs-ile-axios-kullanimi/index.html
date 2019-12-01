@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>VueJs ile Axios Kullanımı - Selçuk Kütük Kişisel Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte \$http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıl">
+<meta name="keywords" content="vuejs,axios,interceptor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VueJs ile Axios Kullanımı">
+<meta property="og:url" content="http://selcukkutuk.com/2019/12/01/vuejs-ile-axios-kullanimi/index.html">
+<meta property="og:site_name" content="Selçuk Kütük Kişisel Blog">
+<meta property="og:description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte \$http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıl">
+<meta property="og:locale" content="tr">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png">
+<meta property="og:updated_time" content="2019-12-01T16:46:48.109Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VueJs ile Axios Kullanımı">
+<meta name="twitter:description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte \$http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıl">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-30109784-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-30109784-1');
+</script>
+
+
+    
+    
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter19105921 = new Ya.Metrika({
+                    id:19105921,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/19105921" style="position:absolute; left:-9999px;" alt></div></noscript>
+<!-- /Yandex.Metrika counter -->    
+
+    
+    
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+  _atrk_opts = {
+    atrk_acct: "xUFTs1rcy520uW",
+    domain: "selcukkutuk.com",
+    dynamic: true
+  };
+  (function() {
+    var as = document.createElement("script");
+    as.type = "text/javascript";
+    as.async = true;
+    as.src = "https://certify-js.alexametrics.com/atrk.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(as, s);
+  })();
+</script>
+<noscript><img src="https://certify.alexametrics.com/atrk.gif?account=xUFTs1rcy520uW" style="display:none" height="1" width="1" alt></noscript>
+<!-- End Alexa Certify Javascript -->
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <!-- <a class="navbar-item navbar-logo" href="/">
+            
+                heyoo
+            
+            </a> -->
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Ana Sayfa</a>
+                
+                <a class="navbar-item" href="/benkimim">Ben Kimim?</a>
+                
+                <a class="navbar-item" href="/arsiv">Arşiv</a>
+                
+                <a class="navbar-item" href="/kategoriler">Kategoriler</a>
+                
+                <a class="navbar-item" href="/etiketler">Etiketler</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-01T06:21:14.000Z">01.12.2019</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/kategoriler/VueJs/">VueJs</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 dakika okuma süresi (Yaklaşık 1100 kelime)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                VueJs ile Axios Kullanımı
+            
+        </h1>
+        <div class="content">
+            <p><img src="https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png" alt></p>
+<p>Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte <strong>\$http</strong>, Angular 2+ da ise <strong>HttpModule</strong> ve <strong>HttpClientModule</strong> (HttpModule Angular 9 ile tamamen kaldırılacak.), JQuery tarafında ise <strong>\$.ajax</strong> yerleşik olarak bulunuyordu. VueJs 2.0’a kadar ise benzer şekilde <strong>vue-resource</strong> ile işlemlerimizi yerleşik olarak yapabiliyorduk. Fakat VueJs ekibi bunun VueJs 2.0 ile birlikte ayrılması gerektiğine ve 3. parti kütüphanelerin buna daha iyi hizmet edebileceğine karar verdiler. Bunun için en çok önerilen ise <strong>Axios</strong>‘tur.<br><a id="more"></a><br>Axios ile http işlemlerinizi çok basit ve etkili bir şekilde çözebilirsiniz. Varsayılan olarak Promise kullanır. Hem istemcide hemde sunucuda çalışır (SSR için uygun). VueJs ile kullanımı da oldukça basittir. Aynı zamanda async/await ile birlikte tertemiz bir kullanım sağlar. O zaman kurulum ile başlayalım incelemeye.</p>
+<blockquote>
+<p><strong>Not:</strong> VueJs uygulamasının zaten olduğu varsayılmıştır.</p>
+</blockquote>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#Yarn</span></span><br><span class="line">$ yarn add axios</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">#NPM</span></span><br><span class="line">npm i axios</span><br></pre></td></tr></table></figure>
+<p>Kurulum tamamlandıktan sonra en temel iki metot olan GET ve POST olaylarını inceleyelim. Uygulamada API olarak <a href="https://jsonplaceholder.typicode.com/" target="_blank" rel="noopener">jsonplaceholder</a> kullanılmıştır.</p>
+<h3 id="axios-get"><a href="#axios-get" class="headerlink" title="axios.get()"></a><strong>axios.get()</strong></h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"axios-get"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"post of posts"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"post.id"</span>&gt;</span>&#123;&#123; post.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"errors &amp;&amp; errors.length"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(error, index) of errors"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span></span><br><span class="line">        &#123;&#123; index + 1 &#125;&#125; - &#123;&#123; error.message &#125;&#125;</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">    created() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">this</span>.getPosts();</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    data() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">        posts: [],</span></span><br><span class="line"><span class="hljs-undefined">        errors: []</span></span><br><span class="line"><span class="hljs-undefined">      &#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    methods: &#123;</span></span><br><span class="line"><span class="hljs-undefined">      getPosts() &#123;</span></span><br><span class="line"><span class="hljs-undefined">        axios</span></span><br><span class="line"><span class="hljs-javascript">          .get(<span class="hljs-string">"https://jsonplaceholder.typicode.com/posts"</span>)</span></span><br><span class="line"><span class="hljs-javascript">          .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> (<span class="hljs-keyword">this</span>.posts = response.data))</span></span><br><span class="line"><span class="hljs-javascript">          .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-keyword">this</span>.errors.push(error);</span></span><br><span class="line"><span class="hljs-undefined">          &#125;);</span></span><br><span class="line"><span class="hljs-undefined">      &#125;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="axios-post"><a href="#axios-post" class="headerlink" title="axios.post()"></a><strong>axios.post()</strong></h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"axios-post"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> @<span class="hljs-attr">submit.prevent</span>=<span class="hljs-string">"sendNewPost"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"title"</span>&gt;</span>Başlık:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"title"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"newPost.title"</span> /&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">:disabled</span>=<span class="hljs-string">"inProgress"</span>&gt;</span>Kaydet<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"sendNewPostResult"</span>&gt;</span></span><br><span class="line">      Oluşan Post</span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>&#123;&#123; sendNewPostResult &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"errors &amp;&amp; errors.length"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(error, index) of errors"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span></span><br><span class="line">        &#123;&#123; index + 1 &#125;&#125; - &#123;&#123; error.message &#125;&#125;</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">    data() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">        inProgress: <span class="hljs-literal">false</span>,</span></span><br><span class="line"><span class="hljs-undefined">        errors: [],</span></span><br><span class="line"><span class="hljs-undefined">        newPost: &#123;</span></span><br><span class="line"><span class="hljs-javascript">          title: <span class="hljs-string">""</span></span></span><br><span class="line"><span class="hljs-undefined">        &#125;,</span></span><br><span class="line"><span class="hljs-javascript">        sendNewPostResult: <span class="hljs-literal">null</span></span></span><br><span class="line"><span class="hljs-undefined">      &#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    methods: &#123;</span></span><br><span class="line"><span class="hljs-undefined">      sendNewPost() &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">this</span>.inProgress = <span class="hljs-literal">true</span>;</span></span><br><span class="line"><span class="hljs-undefined">        axios</span></span><br><span class="line"><span class="hljs-javascript">          .post(<span class="hljs-string">"https://jsonplaceholder.typicode.com/posts"</span>, <span class="hljs-keyword">this</span>.newPost)</span></span><br><span class="line"><span class="hljs-javascript">          .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> (<span class="hljs-keyword">this</span>.sendNewPostResult = response.data))</span></span><br><span class="line"><span class="hljs-javascript">          .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-keyword">this</span>.errors.push(error);</span></span><br><span class="line"><span class="hljs-undefined">          &#125;)</span></span><br><span class="line"><span class="hljs-javascript">          .finally(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (<span class="hljs-keyword">this</span>.inProgress = <span class="hljs-literal">false</span>));</span></span><br><span class="line"><span class="hljs-undefined">      &#125;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Axios-async-await-kullanma"><a href="#Axios-async-await-kullanma" class="headerlink" title="Axios async/await kullanma"></a><strong>Axios async/await kullanma</strong></h3><p>Axios <strong>Promise</strong> kullandığı için await anahtarı ile sonucunu bekletebiliriz. Aşağıda daha önce yaptığımız get örneğini async/await ile birlikte nasıl kullanabileceğimizi göstermeye çalıştım. Burada unutulmaması gereken <strong>await</strong> anahtarı kullanılabilmesi için metodun <strong>async</strong> anahtarı ile işaretlenmiş olması.</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"axios-get"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"post of posts"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"post.id"</span>&gt;</span>&#123;&#123; post.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"errors &amp;&amp; errors.length"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(error, index) of errors"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span></span><br><span class="line">        &#123;&#123; index + 1 &#125;&#125; - &#123;&#123; error.message &#125;&#125;</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">async</span> created() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.getPostsAsync();</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    data() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">        posts: [],</span></span><br><span class="line"><span class="hljs-undefined">        errors: []</span></span><br><span class="line"><span class="hljs-undefined">      &#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    methods: &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">async</span> getPostsAsync() &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">try</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.get(</span></span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-string">"https://jsonplaceholder.typicode.com/posts"</span></span></span><br><span class="line"><span class="hljs-undefined">          );</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">this</span>.posts = response.data;</span></span><br><span class="line"><span class="hljs-javascript">        &#125; <span class="hljs-keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">this</span>.errors.push(error);</span></span><br><span class="line"><span class="hljs-undefined">        &#125;</span></span><br><span class="line"><span class="hljs-undefined">      &#125;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Axios’u-Global-olarak-kullanma"><a href="#Axios’u-Global-olarak-kullanma" class="headerlink" title="Axios’u Global olarak kullanma"></a><strong>Axios’u Global olarak kullanma</strong></h3><p>Axios’u global olarak etkili bir şekilde kullanmak için Vue örneğinin prototype’ine yeni bir property tanımlayacağız. Bunu farklı şekillerde yapabilsekte kafa karışmaması adına main.js içerisinde direkt olarak yapacağız.</p>
+<blockquote>
+<p><strong>Not:</strong> Daha temiz görünmesi için ayrı bir script dosyasında yapılandırabilir ve main.js içerisinden import edebilirdik.</p>
+</blockquote>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">"vue"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> axiosInstance = axios.create(&#123;</span><br><span class="line">  baseURL: <span class="hljs-string">"https://jsonplaceholder.typicode.com/"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Vue.prototype.$axios = axiosInstance;</span><br></pre></td></tr></table></figure>
+<p>Bu yapılandırmadan sonra artık axios’a bileşenlerimizden <strong>this.\$axios</strong> ile ulaşabileceğiz. Aşağıdaki örneği inceleyelim.</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"axios-global"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"post of posts"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"post.id"</span>&gt;</span>&#123;&#123; post.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"errors &amp;&amp; errors.length"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(error, index) of errors"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span></span><br><span class="line">        &#123;&#123; index + 1 &#125;&#125; - &#123;&#123; error.message &#125;&#125;</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">async</span> created() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.getPostsAsync();</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    data() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">        posts: [],</span></span><br><span class="line"><span class="hljs-undefined">        errors: []</span></span><br><span class="line"><span class="hljs-undefined">      &#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    methods: &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">async</span> getPostsAsync() &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">try</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.$axios.get(<span class="hljs-string">"/posts"</span>);</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">this</span>.posts = response.data;</span></span><br><span class="line"><span class="hljs-javascript">        &#125; <span class="hljs-keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">this</span>.errors.push(error);</span></span><br><span class="line"><span class="hljs-undefined">        &#125;</span></span><br><span class="line"><span class="hljs-undefined">      &#125;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="Global-olarak-kullanma-typescript-detayi"><a href="#Global-olarak-kullanma-typescript-detayi" class="headerlink" title="Global olarak kullanma typescript detayı"></a>Global olarak kullanma typescript detayı</h4><p>Eğer VueJs uygulamanızı typescript ile geliştiriyorsanız bu küçük kod ile global olarak kullanırken vscode gibi editörler için intellisense desteği ekleyebilirsiniz. src klasörü altında <strong>shims-axios.d.ts</strong> adı ile bir dosya oluşturun ve aşağıdaki kod parçasını içerisine ekleyin.<br><figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; AxiosInstance &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">module</span> "vue/types/vue" &#123;</span><br><span class="line">  <span class="hljs-keyword">interface</span> Vue &#123;</span><br><span class="line">    $axios: AxiosInstance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Axios-request-response-interceptor"><a href="#Axios-request-response-interceptor" class="headerlink" title="Axios request/response interceptor"></a><strong>Axios request/response interceptor</strong></h3><p>Interceptor araya giren anlamında bir kelime. Peki bu ne anlama geliyor. Bir http isteği oluşturulduğunda sunucuya gitmeden önce yada istek sonucu döndükten hemen sonra merkezi bir noktada son bir dokunuş yapmamız gerekebilir. Ben çok ihtiyaç duyulan iki örnek ile bunu anlatmaya çalışacağım.</p>
+<h4 id="Request-Interceptor"><a href="#Request-Interceptor" class="headerlink" title="Request Interceptor"></a><strong>Request Interceptor</strong></h4><p>Bir istek yapacaksınız ama istek sunucuya gitmeden hemen önce header’a <strong>Authorization</strong> bilgisi eklemek istiyorsunuz. Request interceptor bunun için biçilmiş kaftandır.Örneği inceleyelim.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">"vue"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> axiosInstance = axios.create(&#123;</span><br><span class="line">  baseURL: <span class="hljs-string">"https://jsonplaceholder.typicode.com/"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Vue.prototype.$axios = axiosInstance;</span><br><span class="line"></span><br><span class="line">axiosInstance.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-comment">//Tabiki burada token değerini local yada session store gibi bir yerden okumamız gerekiyor :)</span></span><br><span class="line">  config.headers[<span class="hljs-string">"Authorization"</span>] = <span class="hljs-string">"Bearer eyxxxx"</span>;</span><br><span class="line">  <span class="hljs-keyword">return</span> config;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Artık tüm isteklerin header’ına bu değer ekleniyor olacak.</p>
+<h4 id="Response-Interceptor"><a href="#Response-Interceptor" class="headerlink" title="Response Interceptor"></a><strong>Response Interceptor</strong></h4><p>Buradaki örneğimizde ise mesela sunucudan cevap döndüğünde eğer bir hata var ise bir toast mesajı göstermek isteyebilirsiniz. Diğer bir örnek ise istek sonucunda 401 hata kodu aldığımızda token’ı yenilemek yada kullanıcıyı giriş sayfasına yönlendirmek isteyebiliriz. Çözüm işte tam burası.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">"vue"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> axiosInstance = axios.create(&#123;</span><br><span class="line">  baseURL: <span class="hljs-string">"https://jsonplaceholder.typicode.com/"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Vue.prototype.$axios = axiosInstance;</span><br><span class="line"></span><br><span class="line">axiosInstance.interceptors.response.use(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (config.status === <span class="hljs-number">401</span>) &#123;</span><br><span class="line">    alert(<span class="hljs-string">"Oturum süreniz sona erdi"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> config;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Bitirirken"><a href="#Bitirirken" class="headerlink" title="Bitirirken"></a><strong>Bitirirken</strong></h3><p>Bu yazı ile vue ile axios kütüphanesinin en sık ihtiyaç duyulan bölümlerini ele almaya çalıştım. Gerçekten çok başarılı bir kütüphane olduğunu belirtmekte fayda var. Tüm yapılandırma seçeneklerini incelemek için github deposunu ziyaret etmekte fayda var. Herkese iyi çalışmalar dilerim.</p>
+<h3 id="Kaynaklar"><a href="#Kaynaklar" class="headerlink" title="Kaynaklar"></a><strong>Kaynaklar</strong></h3><ol>
+<li><a href="https://github.com/axios/axios" target="_blank" rel="noopener">https://github.com/axios/axios</a></li>
+<li><a href="https://alligator.io/vuejs/rest-api-axios/" target="_blank" rel="noopener">https://alligator.io/vuejs/rest-api-axios/</a></li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/etiketler/axios/">axios</a>, <a class="has-link-grey -link" href="/etiketler/interceptor/">interceptor</a>, <a class="has-link-grey -link" href="/etiketler/vuejs/">vuejs</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5cdc78eb6340bc001251d3fc&amp;product=inline-share-buttons" async="async"></script>
+
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/24/stencil-bilesen-yasam-dongusu/">
+                <span class="level-item">Stencil Bileşen Yaşam Döngüsü</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Yorumlar</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://selcukkutuk.com/2019/12/01/vuejs-ile-axios-kullanimi/';
+        this.page.identifier = '2019/12/01/vuejs-ile-axios-kullanimi/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'selcukkutuk' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <figure class="image container is-128x128 has-mb-6" style="width: 128px;height: 128px;">
+                            <img class="is-rounded" style="border: 2px solid white;box-shadow: 0 0 10px gray" src="/avatar.png" alt="Selçuk Kütük">
+                        </figure>
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Selçuk Kütük
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        i don&#39;t know but i can learn
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Turkey</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Gönderiler
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Kategoriler
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiketler
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/selcukkutuk">
+                TAKİP ET</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/selcukkutuk">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Medium" href="https://medium.com/@selcukkutuk">
+                
+                <i class="fab fa-medium"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://linkedin.com/in/selcukkutuk">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/selcukkutuk">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com/selcukkutuk">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Kategoriler
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/kategoriler/VueJs/">
+            <span class="level-start">
+                <span class="level-item">VueJs</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/kategoriler/Web-Components/">
+            <span class="level-start">
+                <span class="level-item">Web Components</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Etiket bulutu
+        </h3>
+        <a href="/etiketler/axios/" style="font-size: 10px;">axios</a> <a href="/etiketler/bilesen-iletisimi/" style="font-size: 10px;">bileşen iletişimi</a> <a href="/etiketler/interceptor/" style="font-size: 10px;">interceptor</a> <a href="/etiketler/lifecycle-methods/" style="font-size: 10px;">lifecycle methods</a> <a href="/etiketler/stenciljs/" style="font-size: 20px;">stenciljs</a> <a href="/etiketler/vuejs/" style="font-size: 10px;">vuejs</a> <a href="/etiketler/web-components/" style="font-size: 20px;">web components</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Son
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T06:21:14.000Z">01.12.2019</time></div>
+                    <a href="/2019/12/01/vuejs-ile-axios-kullanimi/" class="has-link-black-ter is-size-6">VueJs ile Axios Kullanımı</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/VueJs/">VueJs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T09:29:56.000Z">24.11.2019</time></div>
+                    <a href="/2019/11/24/stencil-bilesen-yasam-dongusu/" class="has-link-black-ter is-size-6">Stencil Bileşen Yaşam Döngüsü</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-15T21:28:10.000Z">16.05.2019</time></div>
+                    <a href="/2019/05/16/stencilde-bilesenler-arasi-haberlesme/" class="has-link-black-ter is-size-6">Stencil’de Bileşenler Arası Haberleşme</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-15T11:33:05.000Z">15.05.2019</time></div>
+                    <a href="/2019/05/15/stencil-e-giris/" class="has-link-black-ter is-size-6">Stencil&#39;e Giriş</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Arşivler
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/arsiv/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">Aralık 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/arsiv/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">Kasım 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/arsiv/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">Mayıs 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiketler
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/axios/">
+                        <span class="tag">axios</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/bilesen-iletisimi/">
+                        <span class="tag">bileşen iletişimi</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/interceptor/">
+                        <span class="tag">interceptor</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/lifecycle-methods/">
+                        <span class="tag">lifecycle methods</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/stenciljs/">
+                        <span class="tag">stenciljs</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/vuejs/">
+                        <span class="tag">vuejs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/web-components/">
+                        <span class="tag">web components</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    heyoo
+                
+                </a> -->
+                <p class="is-size-7">
+                &copy; 2019 Selçuk Kütük&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("tr");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Bir şeyler yaz...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Gönderiler',
+                PAGES: 'Sayfalar',
+                CATEGORIES: 'Kategoriler',
+                TAGS: 'Etiketler',
+                UNTITLED: '(Başlıksız)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

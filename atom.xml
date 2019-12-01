@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://selcukkutuk.com/"/>
-  <updated>2019-11-24T23:26:26.871Z</updated>
+  <updated>2019-12-01T16:46:48.109Z</updated>
   <id>http://selcukkutuk.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VueJs ile Axios Kullanımı</title>
+    <link href="http://selcukkutuk.com/2019/12/01/vuejs-ile-axios-kullanimi/"/>
+    <id>http://selcukkutuk.com/2019/12/01/vuejs-ile-axios-kullanimi/</id>
+    <published>2019-12-01T06:21:14.000Z</published>
+    <updated>2019-12-01T16:46:48.109Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte &lt;strong&gt;\$http&lt;/strong&gt;, Angular 2+ da ise &lt;strong&gt;HttpModule&lt;/strong&gt; ve &lt;strong&gt;HttpClientModule&lt;/strong&gt; (HttpModule Angular 9 ile tamamen kaldırılacak.), JQuery tarafında ise &lt;strong&gt;\$.ajax&lt;/strong&gt; yerleşik olarak bulunuyordu. VueJs 2.0’a kadar ise benzer şekilde &lt;strong&gt;vue-resource&lt;/strong&gt; ile işlemlerimizi yerleşik olarak yapabiliyorduk. Fakat VueJs ekibi bunun VueJs 2.0 ile birlikte ayrılması gerektiğine ve 3. parti kütüphanelerin buna daha iyi hizmet edebileceğine karar verdiler. Bunun için en çok önerilen ise &lt;strong&gt;Axios&lt;/strong&gt;‘tur.&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="VueJs" scheme="http://selcukkutuk.com/kategoriler/VueJs/"/>
+    
+    
+      <category term="vuejs" scheme="http://selcukkutuk.com/etiketler/vuejs/"/>
+    
+      <category term="axios" scheme="http://selcukkutuk.com/etiketler/axios/"/>
+    
+      <category term="interceptor" scheme="http://selcukkutuk.com/etiketler/interceptor/"/>
+    
+  </entry>
   
   <entry>
     <title>Stencil Bileşen Yaşam Döngüsü</title>
