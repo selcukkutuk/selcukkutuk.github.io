@@ -12,7 +12,7 @@ tags:
 ![Giris Resmi](https://miro.medium.com/max/1000/1*PL9rzQIpoQZ-tJog9CbOxg.png)
 
 Github Actions duyurulduğunda hemen kayıt oldum ve heyecanla beklemeye başladım. Hesabım için aktif olduğunda ise bir deneme fırsatı bulamadım. Bugün temel anlamda basit bir nuxtjs uygulaması nasıl deploy ediliyor diye baktım. Burada örneği nuxtjs ile yapıyor olmamın aslında hiçbir önemi bulunmuyor. Bugün nuxtjs ile bir PoC yapıyordum ve bunu Github Actions ile nasıl deploy edebilirim dedim ve başladım. O zaman adım adım ne yapıyoruz birlikte inceleyelim.
-
+<!-- more -->
 ## **Surgesh için token oluşturalım**
 
 Deploy etmek için kullanacağımız servis surge.sh olacak. Bu nedenle deploy aşamasında kullanacağımız bir token almamız gerekiyor. Tabi bu işlemi yapabilmemiz için surge cli’ı kurmamız gerekli. Bunu aşağıda yer alan komut ile gerçekleştiriyoruz.
