@@ -1,5 +1,5 @@
 ---
-title: nuxtjs-uygulamanizi-github-actions-ile-surgesh-a-deploy-etme
+title: NuxtJs Uygulamanızı Github Actions ile Surge.sh’a Deploy Etme
 date: 2019-12-08 15:19:04
 categories:
  - DevOps
