@@ -6,16 +6,16 @@
 title: Selçuk Kütük Kişisel Blog
 subtitle: i don't know but i can learn
 description: Selçuk Kütük - Yazılım meraklısı ve amatör fotoğrafçı bir Orman Mühendisi'nin yazılım geliştirme deneyimleri.
-keywords: selcuk kutuk, selçuk kütük, software, development, c#, .net, js, vue, angular, stencil
+keywords: selçuk kütük, software, development, c#, .net, .net core, js, vue, angular, stencil
 author: Selçuk Kütük
 language: tr
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://selcukkutuk.com
+url: https://selcukkutuk.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 
 # Directory
@@ -43,16 +43,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: kategorilenmemis
 category_map:
@@ -83,16 +83,19 @@ deploy:
   branch: master
 
 #Custom
-feed:
-  type: atom
-  path: atom.xml
-  limit: 20
-  hub:
-  content:
-  content_limit: 140
-  content_limit_delim: ' '
-  order_by: -date
-  icon: icon.png
+type:
+  - atom
+  - rss2
+path:
+  - atom.xml
+  - rss2.xml
+limit: 20
+hub:
+content:
+content_limit: 140
+content_limit_delim: " "
+order_by: -date
+icon: icon.png
 
 comments: true
 disqus_shortname: selcukkutuk
