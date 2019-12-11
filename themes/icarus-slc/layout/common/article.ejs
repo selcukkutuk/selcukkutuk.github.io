@@ -70,7 +70,7 @@
             </div>
         </div>
         <% } %>
-        <% if (!index && has_config('share.type')) { %>
+        <% if (!index && post.sharing && has_config('share.type')) { %>
         <%- partial('share/' + get_config('share.type')) %>
         <% } %>
     </div>
@@ -116,7 +116,7 @@
 </div>
 <% } %>
 
-<% if (!index && has_config('comment.type')) { %>
+<% if (!index && post.comments && has_config('comment.type')) { %>
 <div class="card">
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal"><%= __('article.comments') %></h3>
