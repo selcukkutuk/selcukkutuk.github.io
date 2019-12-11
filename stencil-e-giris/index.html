@@ -11,7 +11,7 @@
 <meta name="keywords" content="stenciljs,web components">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stencil&#39;e Giriş">
-<meta property="og:url" content="http://selcukkutuk.com/2019/05/15/stencil-e-giris/index.html">
+<meta property="og:url" content="https://selcukkutuk.com/stencil-e-giris/index.html">
 <meta property="og:site_name" content="Selçuk Kütük Kişisel Blog">
 <meta property="og:description" content="Nedir?Stencil Ionic ekibi tarafından geliştirilen native web bileşenleri oluşturmak için hazırlanan bir araçtır. Bunun yanında sanal dom, reaktif veri aktarımı Typescript ve JSX gibi güçlü özellikler">
 <meta property="og:locale" content="tr">
@@ -155,13 +155,13 @@
 <body class="is-2-column">
     <nav class="navbar navbar-main">
     <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <!-- <a class="navbar-item navbar-logo" href="/">
+        <!-- <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
             
                 heyoo
             
-            </a> -->
-        </div>
+            </a>
+        </div> -->
         <div class="navbar-menu">
             
             <div class="navbar-start">
@@ -230,11 +230,11 @@
 <p><strong>Dikkat:</strong> Stencil henüz alpha bile diyemeyeceğimiz çok ama çok erken bir sürümde. Bu nedenle ilk kararlı sürüm yayınlanana kadar dikkatli olunması ve değişimlerin iyi izlenmesi gerekmektedir. Çünkü bazı klavye bükücü anlamsız hatalar ve kararlı sürüme kadar bolca “breaking change” bizleri bekliyor olabilir.</p>
 </blockquote>
 <h3 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a><strong>Kurulum</strong></h3><p>Şu anda Stencil çok erken bir aşamada olduğu için bir cli aracı bulunmuyor. Bu nedenle hızlıca bir göz atmanın en iyi yolu ekip tarafından github üzerindeki başlangıç uygulaması reposunu bilgisayarımıza klonlamak (git clone)olacaktır. O zaman başlayalım:</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> git clone https://github.com/ionic-team/stencil-starter.git ilk-stencil-ornegi</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> git <span class="hljs-built_in">clone</span> https://github.com/ionic-team/stencil-starter.git ilk-stencil-ornegi</span></span><br></pre></td></tr></table></figure>
 <p>Klonlama işlemi tamamlandıktan sonra bağımlılıklar için klasör içerisine girip <strong>npm</strong> yada <strong>yarn</strong> ile yükleme işlemini tamamlıyoruz.</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> cd ilk-stencil-ornegi</span><br><span class="line"><span class="hljs-meta">$</span> npm install</span><br><span class="line"><span class="hljs-meta">#</span>veya yarn için</span><br><span class="line"><span class="hljs-meta">$</span> yarn</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> <span class="hljs-built_in">cd</span> ilk-stencil-ornegi</span></span><br><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> npm install</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">veya yarn iç<span class="hljs-keyword">in</span></span></span><br><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> yarn</span></span><br></pre></td></tr></table></figure>
 <p>Yükleme işlemi tamamlandıktan sonra projeyi yerel bir sunucu üzerinde ayağa kaldırmak için şu komutu çalıştırıyoruz:</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> npm start</span><br><span class="line"><span class="hljs-meta">#</span> veya yarn için</span><br><span class="line"><span class="hljs-meta">$</span> yarn start</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> npm start</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> veya yarn iç<span class="hljs-keyword">in</span></span></span><br><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> yarn start</span></span><br></pre></td></tr></table></figure>
 <center><br><img src="https://cdn-images-1.medium.com/max/800/1*esy1UK8XcT2giZ3CGhdV-w.png" alt="Açılış öncesi kısa bir build işlemi gerçekleşiyor."><br></center>
 
 <center><br><img src="https://cdn-images-1.medium.com/max/800/1*0KoFL7uLIxPBLk36U1wZIg.png" alt="Build işlemi sonrasında uygulama yükleniyor."><br></center>
@@ -280,11 +280,6 @@
         
         
         
-        
-<div class="sharethis-inline-share-buttons"></div>
-<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5cdc78eb6340bc001251d3fc&amp;product=inline-share-buttons" async="async"></script>
-
-        
     </div>
 </div>
 
@@ -296,7 +291,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/16/stencilde-bilesenler-arasi-haberlesme/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/stencilde-bilesenler-arasi-haberlesme/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">Stencil’de Bileşenler Arası Haberleşme</span>
             </a>
@@ -314,8 +309,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'http://selcukkutuk.com/2019/05/15/stencil-e-giris/';
-        this.page.identifier = '2019/05/15/stencil-e-giris/';
+        this.page.url = 'https://selcukkutuk.com/stencil-e-giris/';
+        this.page.identifier = 'stencil-e-giris/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -376,7 +371,7 @@
                         Gönderiler
                     </p>
                     <p class="title has-text-weight-normal">
-                        4
+                        5
                     </p>
                 </div>
             </div>
@@ -386,7 +381,7 @@
                         Kategoriler
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                 </div>
             </div>
@@ -396,7 +391,7 @@
                         Etiketler
                     </p>
                     <p class="title has-text-weight-normal">
-                        7
+                        10
                     </p>
                 </div>
             </div>
@@ -465,6 +460,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/kategoriler/DevOps/">
+            <span class="level-start">
+                <span class="level-item">DevOps</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/kategoriler/VueJs/">
             <span class="level-start">
                 <span class="level-item">VueJs</span>
@@ -492,7 +495,7 @@
         <h3 class="menu-label">
             Etiket bulutu
         </h3>
-        <a href="/etiketler/axios/" style="font-size: 10px;">axios</a> <a href="/etiketler/bilesen-iletisimi/" style="font-size: 10px;">bileşen iletişimi</a> <a href="/etiketler/interceptor/" style="font-size: 10px;">interceptor</a> <a href="/etiketler/lifecycle-methods/" style="font-size: 10px;">lifecycle methods</a> <a href="/etiketler/stenciljs/" style="font-size: 20px;">stenciljs</a> <a href="/etiketler/vuejs/" style="font-size: 10px;">vuejs</a> <a href="/etiketler/web-components/" style="font-size: 20px;">web components</a>
+        <a href="/etiketler/axios/" style="font-size: 10px;">axios</a> <a href="/etiketler/bilesen-iletisimi/" style="font-size: 10px;">bileşen iletişimi</a> <a href="/etiketler/githubactions/" style="font-size: 10px;">githubactions</a> <a href="/etiketler/interceptor/" style="font-size: 10px;">interceptor</a> <a href="/etiketler/lifecycle-methods/" style="font-size: 10px;">lifecycle methods</a> <a href="/etiketler/nuxtjs/" style="font-size: 10px;">nuxtjs</a> <a href="/etiketler/stenciljs/" style="font-size: 20px;">stenciljs</a> <a href="/etiketler/surgesh/" style="font-size: 10px;">surgesh</a> <a href="/etiketler/vuejs/" style="font-size: 10px;">vuejs</a> <a href="/etiketler/web-components/" style="font-size: 20px;">web components</a>
     </div>
 </div>
 
@@ -508,8 +511,21 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T12:19:04.000Z">08.12.2019</time></div>
+                    <a href="/nuxtjs-uygulamanizi-github-actions-ile-surgesh-a-deploy-etme/" class="has-link-black-ter is-size-6">NuxtJs Uygulamanızı Github Actions ile Surge.sh’a Deploy Etme</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/DevOps/">DevOps</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T06:21:14.000Z">01.12.2019</time></div>
-                    <a href="/2019/12/01/vuejs-ile-axios-kullanimi/" class="has-link-black-ter is-size-6">VueJs ile Axios Kullanımı</a>
+                    <a href="/vuejs-ile-axios-kullanimi/" class="has-link-black-ter is-size-6">VueJs ile Axios Kullanımı</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/kategoriler/VueJs/">VueJs</a>
                     </p>
@@ -522,7 +538,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T09:29:56.000Z">24.11.2019</time></div>
-                    <a href="/2019/11/24/stencil-bilesen-yasam-dongusu/" class="has-link-black-ter is-size-6">Stencil Bileşen Yaşam Döngüsü</a>
+                    <a href="/stencil-bilesen-yasam-dongusu/" class="has-link-black-ter is-size-6">Stencil Bileşen Yaşam Döngüsü</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
                     </p>
@@ -535,7 +551,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-15T21:28:10.000Z">16.05.2019</time></div>
-                    <a href="/2019/05/16/stencilde-bilesenler-arasi-haberlesme/" class="has-link-black-ter is-size-6">Stencil’de Bileşenler Arası Haberleşme</a>
+                    <a href="/stencilde-bilesenler-arasi-haberlesme/" class="has-link-black-ter is-size-6">Stencil’de Bileşenler Arası Haberleşme</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
                     </p>
@@ -548,7 +564,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-15T11:33:05.000Z">15.05.2019</time></div>
-                    <a href="/2019/05/15/stencil-e-giris/" class="has-link-black-ter is-size-6">Stencil&#39;e Giriş</a>
+                    <a href="/stencil-e-giris/" class="has-link-black-ter is-size-6">Stencil&#39;e Giriş</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
                     </p>
@@ -574,7 +590,7 @@
                     <span class="level-item">Aralık 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -629,6 +645,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/etiketler/githubactions/">
+                        <span class="tag">githubactions</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/etiketler/interceptor/">
                         <span class="tag">interceptor</span>
                         <span class="tag is-grey">1</span>
@@ -643,9 +666,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/etiketler/nuxtjs/">
+                        <span class="tag">nuxtjs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/etiketler/stenciljs/">
                         <span class="tag">stenciljs</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/surgesh/">
+                        <span class="tag">surgesh</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -2,23 +2,25 @@
 <html lang="tr">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Ben Kimim ? - Selçuk Kütük Kişisel Blog</title>
+<title>Stencil Bileşen Yaşam Döngüsü - Selçuk Kütük Kişisel Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="ÖzetKısa bir özet Eğitim HayatımEğitim bilgileri İş Deneyimlerimİş deneyimleri ile ilgili bilgiler HedeflerimKariyerimde ulaşmak istedilerim">
-<meta name="keywords" content="selçuk kütük, software, development, c#, .net, .net core, js, vue, angular, stencil">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ben Kimim ?">
-<meta property="og:url" content="https://selcukkutuk.com/benkimim/index.html">
+    <meta name="description" content="GirişYaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekir">
+<meta name="keywords" content="stenciljs,web components,lifecycle methods">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stencil Bileşen Yaşam Döngüsü">
+<meta property="og:url" content="https://selcukkutuk.com/stencil-bilesen-yasam-dongusu/index.html">
 <meta property="og:site_name" content="Selçuk Kütük Kişisel Blog">
-<meta property="og:description" content="ÖzetKısa bir özet Eğitim HayatımEğitim bilgileri İş Deneyimlerimİş deneyimleri ile ilgili bilgiler HedeflerimKariyerimde ulaşmak istedilerim">
+<meta property="og:description" content="GirişYaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekir">
 <meta property="og:locale" content="tr">
-<meta property="og:updated_time" content="2019-12-11T19:54:07.182Z">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*ez1jFYb1jnH0xU3xAaQ7zg.png">
+<meta property="og:updated_time" content="2019-11-24T23:26:26.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ben Kimim ?">
-<meta name="twitter:description" content="ÖzetKısa bir özet Eğitim HayatımEğitim bilgileri İş Deneyimlerimİş deneyimleri ile ilgili bilgiler HedeflerimKariyerimde ulaşmak istedilerim">
+<meta name="twitter:title" content="Stencil Bileşen Yaşam Döngüsü">
+<meta name="twitter:description" content="GirişYaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekir">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1000/1*ez1jFYb1jnH0xU3xAaQ7zg.png">
 
 
 
@@ -162,7 +164,7 @@
                 
                 <a class="navbar-item" href="/">Ana Sayfa</a>
                 
-                <a class="navbar-item is-active" href="/benkimim">Ben Kimim?</a>
+                <a class="navbar-item" href="/benkimim">Ben Kimim?</a>
                 
                 <a class="navbar-item" href="/arsiv">Arşiv</a>
                 
@@ -192,17 +194,102 @@
     
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-24T09:29:56.000Z">24.11.2019</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 dakika okuma süresi (Yaklaşık 1010 kelime)
+                </span>
+                
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Ben Kimim ?
+                Stencil Bileşen Yaşam Döngüsü
             
         </h1>
         <div class="content">
-            <h4 id="Ozet"><a href="#Ozet" class="headerlink" title="Özet"></a><strong>Özet</strong></h4><p>Kısa bir özet</p>
-<h4 id="Egitim-Hayatim"><a href="#Egitim-Hayatim" class="headerlink" title="Eğitim Hayatım"></a><strong>Eğitim Hayatım</strong></h4><p>Eğitim bilgileri</p>
-<h4 id="Is-Deneyimlerim"><a href="#Is-Deneyimlerim" class="headerlink" title="İş Deneyimlerim"></a><strong>İş Deneyimlerim</strong></h4><p>İş deneyimleri ile ilgili bilgiler</p>
-<h4 id="Hedeflerim"><a href="#Hedeflerim" class="headerlink" title="Hedeflerim"></a><strong>Hedeflerim</strong></h4><p>Kariyerimde ulaşmak istedilerim</p>
+            <p><img src="https://cdn-images-1.medium.com/max/1000/1*ez1jFYb1jnH0xU3xAaQ7zg.png" alt></p>
+<h2 id="Giris"><a href="#Giris" class="headerlink" title="Giriş"></a><strong>Giriş</strong></h2><p>Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs’de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.<br><a id="more"></a></p>
+<h3 id="connectedCallback"><a href="#connectedCallback" class="headerlink" title="connectedCallback()"></a><strong>connectedCallback()</strong></h3><p>Bu metot bileşen DOM’a her bağlandığında çalıştırılır. Bileşenin DOM’a her bağlandığında yapmasını istediğimiz işlemler burada yer alabilir.</p>
+<p><strong>Not:</strong> Bileşen DOM’a ilk bağlandığında <strong>connectedCallback()</strong> metodu <strong>componentWillLoad()</strong> metodundan önce çağrılır. Uygulamada bir bileşenin çok kez DOM’a eklenebileceğini yada kaldırılabileceğini dolayısıyla bu metodun defalarca kez çağrılabileceğini unutmamak gerekir.</p>
+<h3 id="disconnectedCallback"><a href="#disconnectedCallback" class="headerlink" title="disconnectedCallback()"></a><strong>disconnectedCallback()</strong></h3><p>Bu metot bileşenin DOM ile bağlantısı her kesildiğinde çağrılır. <strong>connectedCallback()</strong> metodunda olduğu gibi bir çok kez çağrılabileceğini unutmamak gerekir.</p>
+<h3 id="componentWillLoad"><a href="#componentWillLoad" class="headerlink" title="componentWillLoad()"></a><strong>componentWillLoad()</strong></h3><p>Bileşen DOM’a ilk kez bağlandıktan hemen sonra çağrılır. Burada geriye bir <strong>Promise</strong> return edilerek ilk render işlemi bekletilebilir. Özellikle bileşenin oluşturulması için bir API’ye istek yapılması gerekiyorsa, işlem burada gerçekleştirilebilir.</p>
+<h3 id="componentDidLoad"><a href="#componentDidLoad" class="headerlink" title="componentDidLoad()"></a><strong>componentDidLoad()</strong></h3><p>Bileşen DOM’a tam olarak yüklendikten ve render işlemi tamamlandıktan sonra bir kez çağrılır.</p>
+<h3 id="componentWillRender"><a href="#componentWillRender" class="headerlink" title="componentWillRender()"></a><strong>componentWillRender()</strong></h3><p>Her render işlemi öncesinde çağrılır. <strong>componentWillLoad()</strong> metodunda olduğu gibi geriye bir <strong>Promise</strong> return ederek render işlemi bekletilebilir.</p>
+<h3 id="componentDidRender"><a href="#componentDidRender" class="headerlink" title="componentDidRender()"></a><strong>componentDidRender()</strong></h3><p>Her render işlemi sonrasında çağrılır.</p>
+<h3 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate()"></a><strong>componentWillUpdate()</strong></h3><p>Prop() veya State() değerleri değiştiğinde bileşen güncellenmeden hemen önce çağrılır. <strong>componentWillLoad()</strong> metodunda olduğu gibi geriye bir <strong>Promise</strong> return ederek render işlemi bekletilebilir.</p>
+<p><strong>Not:</strong> Bileşen DOM’a ilk kez eklendiğinde bu metot çağrılmaz.</p>
+<h3 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate()"></a><strong>componentDidUpdate()</strong></h3><p>Bileşen güncellendikten hemen sonra çağrılır.</p>
+<p><strong>Not:</strong> Bileşen DOM’a ilk kez eklendiğinde bu metot çağrılmaz.</p>
+<h3 id="componentDidUnload"><a href="#componentDidUnload" class="headerlink" title="componentDidUnload()"></a><strong>componentDidUnload()</strong></h3><p>Bu metot bileşen DOM’dan kaldırıldığında çağrılır. Bileşen oluştuğunda örneğin <strong>setInterval</strong> ile bir timer oluşturduysanız bu metotda clearInterval ile gereksiz çalışmasına (bellek tüketmesine/sürpriz sonuçlar oluşturmasına) engel olabilirsiniz.</p>
+<h2 id="Farkli-Senaryolarda-Metotlarin-Calistirilma-Sirasi"><a href="#Farkli-Senaryolarda-Metotlarin-Calistirilma-Sirasi" class="headerlink" title="Farklı Senaryolarda Metotların Çalıştırılma Sırası"></a><strong>Farklı Senaryolarda Metotların Çalıştırılma Sırası</strong></h2><p>Diyelim bileşeniniz bütün yöntemleri içeriyor olsun. Bu bileşeni DOM’a eklediğinizde, DOM’dan kaldırdığınızda ve tekrar DOM’a eklediğinizde nasıl br sıralama oluyor aşağıdan inceleyelim.</p>
+<h3 id="Bilesen-DOM’a-Ilk-Eklendiginde"><a href="#Bilesen-DOM’a-Ilk-Eklendiginde" class="headerlink" title="Bileşen DOM’a İlk Eklendiğinde"></a><strong>Bileşen DOM’a İlk Eklendiğinde</strong></h3><ol>
+<li>connectedCallback()</li>
+<li>componentWillLoad()</li>
+<li>componentWillRender()</li>
+<li>componentDidRender()</li>
+<li>componentDidLoad()</li>
+</ol>
+<h3 id="Bilesen-DOM’dan-Kaldirildiginda"><a href="#Bilesen-DOM’dan-Kaldirildiginda" class="headerlink" title="Bileşen DOM’dan Kaldırıldığında"></a><strong>Bileşen DOM’dan Kaldırıldığında</strong></h3><ol>
+<li>disconnectedCallback()</li>
+<li>componentDidUnload()</li>
+</ol>
+<h3 id="Bilesen-DOM’a-Ikinci-Kez-Eklendiginde"><a href="#Bilesen-DOM’a-Ikinci-Kez-Eklendiginde" class="headerlink" title="Bileşen DOM’a İkinci Kez Eklendiğinde"></a><strong>Bileşen DOM’a İkinci Kez Eklendiğinde</strong></h3><ol>
+<li>connectedCallback()</li>
+</ol>
+<h3 id="Bilesende-Guncelleme-Oldugunda"><a href="#Bilesende-Guncelleme-Oldugunda" class="headerlink" title="Bileşende Güncelleme Olduğunda"></a><strong>Bileşende Güncelleme Olduğunda</strong></h3><ol>
+<li>componentWillUpdate()</li>
+<li>componentWillRender()</li>
+<li>componentDidRender()</li>
+<li>componentDidUpdate()</li>
+</ol>
+<h2 id="Ic-Ice-Bilesenlerde-Yasam-Dongusu"><a href="#Ic-Ice-Bilesenlerde-Yasam-Dongusu" class="headerlink" title="İç İçe Bileşenlerde Yaşam Döngüsü"></a>İç İçe Bileşenlerde Yaşam Döngüsü</h2><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">bilesen-a</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">bilesen-b</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">bilesen-c</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bilesen-c</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">bilesen-b</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">bilesen-a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>İç içe bileşen kullanımında ise aşağıdaki gibi bir sıra ile metotlar çağırılmaktadır.</p>
+<ol>
+<li><span style="color:#2BD9FE">bilesen-a-componentWillLoad()</span></li>
+<li><span style="color:#2BD9FE">bilesen-a-componentWillRender()</span></li>
+<li><span style="color:#52AA5E">bilesen-b-componentWillLoad()</span></li>
+<li><span style="color:#52AA5E">bilesen-b-componentWillRender()</span></li>
+<li><span style="color:#985F99">bilesen-c-componentWillLoad()</span></li>
+<li><span style="color:#985F99">bilesen-c-componentWillRender()</span></li>
+<li><span style="color:#985F99">bilesen-c-componentDidRender()</span></li>
+<li><span style="color:#985F99">bilesen-c-componentDidLoad()</span></li>
+<li><span style="color:#52AA5E">bilesen-b-componentDidRender()</span></li>
+<li><span style="color:#52AA5E">bilesen-b-componentDidLoad()</span></li>
+<li><span style="color:#2BD9FE">bilesen-a-componentDidRender()</span></li>
+<li><span style="color:#2BD9FE">bilesen-a-componentDidLoad()</span></li>
+</ol>
+<blockquote>
+<p><strong>Not:</strong> Bazı bileşenler önceden yüklenmiş olsada metot çağırma sırası yine yukarıdaki gibi olmaktadır.</p>
+</blockquote>
+<h2 id="Zaman-Uyumsuz-Yasam-Dongusu-Metotlari"><a href="#Zaman-Uyumsuz-Yasam-Dongusu-Metotlari" class="headerlink" title="Zaman Uyumsuz Yaşam Döngüsü Metotları"></a>Zaman Uyumsuz Yaşam Döngüsü Metotları</h2><p>Yazının bazı bölümlerinde <strong>componentWillLoad()</strong> ve bazı diğer metotların geriye bir Promise return edebildiğinden bahsetmiştik. Şimdi bunu bir örnek ile daha iyi anlamaya çalışalım. Örneğin bileşen ilk kez render edilmeden önce bileşenin oluşumunda sunucudan gelen verilerin kullanılması gerekiyor. Aşağıdaki örneği inceleyelim.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">componentWillLoad() &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">'https://jsonplaceholder.typicode.com/todos'</span>)</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json())</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-params">todos</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>.todos = todos;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Bileşenin <strong>componentWillLoad()</strong> metodu geriye bir Promise return ediyor. Dolayısıyla istek sonuçlanana kadar bileşen render edilmeyecek.</p>
+<h2 id="Bitirirken"><a href="#Bitirirken" class="headerlink" title="Bitirirken"></a>Bitirirken</h2><p>Bu yazı ile stenciljs için önemli bir konu olan yaşam döngüsü metotlarını incelemeye çalıştım. Bir sonraki yazıda görüşmek üzere.</p>
+<h2 id="Kaynaklar"><a href="#Kaynaklar" class="headerlink" title="Kaynaklar"></a>Kaynaklar</h2><ol>
+<li><a href="https://stenciljs.com/docs/component-lifecycle" target="_blank" rel="noopener">https://stenciljs.com/docs/component-lifecycle</a></li>
+</ol>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/etiketler/lifecycle-methods/">lifecycle methods</a>, <a class="has-link-grey -link" href="/etiketler/stenciljs/">stenciljs</a>, <a class="has-link-grey -link" href="/etiketler/web-components/">web components</a>
+                </div>
+            </div>
         </div>
         
         
@@ -214,7 +301,52 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/vuejs-ile-axios-kullanimi/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">VueJs ile Axios Kullanımı</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/stencilde-bilesenler-arasi-haberlesme/">
+                <span class="level-item">Stencil’de Bileşenler Arası Haberleşme</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Yorumlar</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://selcukkutuk.com/stencil-bilesen-yasam-dongusu/';
+        this.page.identifier = 'stencil-bilesen-yasam-dongusu/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'selcukkutuk' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
