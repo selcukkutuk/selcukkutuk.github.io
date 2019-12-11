@@ -212,8 +212,6 @@ plugins:
     google-analytics:
         # Google Analytics tracking id
         tracking_id: UA-30109784-1
-    yandex-metrica:
-        tracking_id: 19105921
     # Baidu Analytics plugin settings
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Baidu-Analytics
     baidu-analytics:
