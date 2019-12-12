@@ -2,7 +2,7 @@
 title: NuxtJs Uygulamanızı Github Actions ile Surge.sh’a Deploy Etme
 date: 2019-12-08 15:19:04
 categories:
- - DevOps
+  - DevOps
 tags:
   - nuxtjs
   - githubactions
@@ -12,7 +12,9 @@ tags:
 ![Giris Resmi](https://miro.medium.com/max/1000/1*PL9rzQIpoQZ-tJog9CbOxg.png)
 
 Github Actions duyurulduğunda hemen kayıt oldum ve heyecanla beklemeye başladım. Hesabım için aktif olduğunda ise bir deneme fırsatı bulamadım. Bugün temel anlamda basit bir nuxtjs uygulaması nasıl deploy ediliyor diye baktım. Burada örneği nuxtjs ile yapıyor olmamın aslında hiçbir önemi bulunmuyor. Bugün nuxtjs ile bir PoC yapıyordum ve bunu Github Actions ile nasıl deploy edebilirim dedim ve başladım. O zaman adım adım ne yapıyoruz birlikte inceleyelim.
+
 <!-- more -->
+
 ## **Surgesh için token oluşturalım**
 
 Deploy etmek için kullanacağımız servis surge.sh olacak. Bu nedenle deploy aşamasında kullanacağımız bir token almamız gerekiyor. Tabi bu işlemi yapabilmemiz için surge cli’ı kurmamız gerekli. Bunu aşağıda yer alan komut ile gerçekleştiriyoruz.
@@ -98,7 +100,7 @@ Peki gelelim 18. satıra. Aslında diğer run komutlarından hiçbir farkı bulu
 
 Bunlar Github Actions içerisinde kullanacağımız ama halka açmamamız gereken alanlar. O zaman nereden tanımlanıyor gelin ona bir bakalım.
 
-![İş akışı tanımlama](https://miro.medium.com/max/1332/1*pW6dH9rC5UZc_mK2arTAnw.png)
+![İş akışı secret tanımlama](https://miro.medium.com/max/1332/1*pW6dH9rC5UZc_mK2arTAnw.png)
 
 Secret alanları tanımlama
 Yukarıdan resimden takip ederek buraya ulaşabilirsiniz. Çok basit bir anahtar-değer ikilisi şeklinde gizli verilerimizi tutmamıza yardımcı oluyor. Daha sonra ise iş akışı dosyamızda bunlara **\${{ secrets.ANAHTAR}}** şeklinde erişebiliyoruz. İhtiyacımız olan iki sırrı :) buraya tanımlayalım.
@@ -107,7 +109,7 @@ Yukarıdan resimden takip ederek buraya ulaşabilirsiniz. Çok basit bir anahtar
 
 Artık bu depoya bir push yapıldığında bu iş akışı devreye girecek ve uygulamamız surge.sh’a gönderilecek.
 
-![İş akışı tanımlama](https://miro.medium.com/max/1916/1*Ji6CWv_3w5F45wZ06oUj2g.png)
+![İş akışı çalışması](https://miro.medium.com/max/1916/1*Ji6CWv_3w5F45wZ06oUj2g.png)
 
 ## **Bitirirken**
 

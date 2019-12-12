@@ -8,10 +8,13 @@ tags:
   - axios
   - interceptor
 ---
-![](https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png)
 
-Çok az sayıda framework/library yerleşik bir http API'si bulundurur. Örneğin AngularJs ile birlikte **$http**, Angular 2+ da ise **HttpModule** ve **HttpClientModule** (HttpModule Angular 9 ile tamamen kaldırılacak.), JQuery tarafında ise **$.ajax** yerleşik olarak bulunuyordu. VueJs 2.0'a kadar ise benzer şekilde **vue-resource** ile işlemlerimizi yerleşik olarak yapabiliyorduk. Fakat VueJs ekibi bunun VueJs 2.0 ile birlikte ayrılması gerektiğine ve 3. parti kütüphanelerin buna daha iyi hizmet edebileceğine karar verdiler. Bunun için en çok önerilen ise **Axios**'tur.
+![Giriş Logosu](https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png)
+
+Çok az sayıda framework/library yerleşik bir http API'si bulundurur. Örneğin AngularJs ile birlikte **\$http**, Angular 2+ da ise **HttpModule** ve **HttpClientModule** (HttpModule Angular 9 ile tamamen kaldırılacak.), JQuery tarafında ise **\$.ajax** yerleşik olarak bulunuyordu. VueJs 2.0'a kadar ise benzer şekilde **vue-resource** ile işlemlerimizi yerleşik olarak yapabiliyorduk. Fakat VueJs ekibi bunun VueJs 2.0 ile birlikte ayrılması gerektiğine ve 3. parti kütüphanelerin buna daha iyi hizmet edebileceğine karar verdiler. Bunun için en çok önerilen ise **Axios**'tur.
+
 <!-- more -->
+
 Axios ile http işlemlerinizi çok basit ve etkili bir şekilde çözebilirsiniz. Varsayılan olarak Promise kullanır. Hem istemcide hemde sunucuda çalışır (SSR için uygun). VueJs ile kullanımı da oldukça basittir. Aynı zamanda async/await ile birlikte tertemiz bir kullanım sağlar. O zaman kurulum ile başlayalım incelemeye.
 
 > **Not:** VueJs uygulamasının zaten olduğu varsayılmıştır.
@@ -222,8 +225,11 @@ Bu yapılandırmadan sonra artık axios'a bileşenlerimizden **this.\$axios** il
   };
 </script>
 ```
+
 #### Global olarak kullanma typescript detayı
+
 Eğer VueJs uygulamanızı typescript ile geliştiriyorsanız bu küçük kod ile global olarak kullanırken vscode gibi editörler için intellisense desteği ekleyebilirsiniz. src klasörü altında **shims-axios.d.ts** adı ile bir dosya oluşturun ve aşağıdaki kod parçasını içerisine ekleyin.
+
 ```ts
 import { AxiosInstance } from "axios";
 
@@ -282,11 +288,14 @@ axiosInstance.interceptors.response.use(config => {
   return config;
 });
 ```
+
 ### **Bitirirken**
+
 Bu yazı ile vue ile axios kütüphanesinin en sık ihtiyaç duyulan bölümlerini ele almaya çalıştım. Gerçekten çok başarılı bir kütüphane olduğunu belirtmekte fayda var. Tüm yapılandırma seçeneklerini incelemek için github deposunu ziyaret etmekte fayda var. Herkese iyi çalışmalar dilerim.
 
 #### **Örnek Github Adresi:** https://github.com/selcukkutuk/vue-axios-examples
 
 ### **Kaynaklar**
+
 1. https://github.com/axios/axios
 2. https://alligator.io/vuejs/rest-api-axios/

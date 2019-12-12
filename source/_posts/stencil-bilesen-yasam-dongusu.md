@@ -8,11 +8,15 @@ tags:
   - web components
   - lifecycle methods
 ---
-![](https://cdn-images-1.medium.com/max/1000/1*ez1jFYb1jnH0xU3xAaQ7zg.png)
+
+![Giriş Logosu](https://cdn-images-1.medium.com/max/1000/1*ez1jFYb1jnH0xU3xAaQ7zg.png)
+
 ## **Giriş**
 
 Yaşam döngüsü her framework yada library de olduğu gibi Stenciljs'de de önem arz etmektedir. Bir bileşenin yaşam döngüsünü iyi bilmeliyiz ki herhangi bir t anında bileşene müdahale etmek gerekirse bunu nerede yapabileceğimizi kestirebilelim. Aşağıda çağrılma sıralarını dikkate almadan açıklamaya çalışacağım. Sonraki başlıkta ise farklı senaryolarda tam olarak hangi sıra ile çalıştıklarını belirtiyor olacağım. O zaman başlayalım.
+
 <!-- more -->
+
 ### **connectedCallback()**
 
 Bu metot bileşen DOM'a her bağlandığında çalıştırılır. Bileşenin DOM'a her bağlandığında yapmasını istediğimiz işlemler burada yer alabilir.
@@ -61,26 +65,27 @@ Diyelim bileşeniniz bütün yöntemleri içeriyor olsun. Bu bileşeni DOM'a ekl
 
 ### **Bileşen DOM'a İlk Eklendiğinde**
 
-  1. connectedCallback()
-  2. componentWillLoad()
-  3. componentWillRender()
-  4. componentDidRender()
-  5. componentDidLoad()
+1. connectedCallback()
+2. componentWillLoad()
+3. componentWillRender()
+4. componentDidRender()
+5. componentDidLoad()
 
 ### **Bileşen DOM'dan Kaldırıldığında**
 
-  1. disconnectedCallback()
-  2. componentDidUnload()
+1. disconnectedCallback()
+2. componentDidUnload()
 
 ### **Bileşen DOM'a İkinci Kez Eklendiğinde**
 
-  1. connectedCallback()
+1. connectedCallback()
 
 ### **Bileşende Güncelleme Olduğunda**
-  1. componentWillUpdate()
-  2. componentWillRender()
-  3. componentDidRender()
-  4. componentDidUpdate()
+
+1. componentWillUpdate()
+2. componentWillRender()
+3. componentDidRender()
+4. componentDidUpdate()
 
 ## İç İçe Bileşenlerde Yaşam Döngüsü
 
