@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
 <title>Stencil&#39;e Giriş - Selçuk Kütük Kişisel Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*0KoFL7uLIxPBLk36U1wZIg.png">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/800/1*32A_5VSRz8lVpPdI-RSbKQ.png">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*CnWsqOQhTgH8q1EsE6pxAw.gif">
-<meta property="og:updated_time" content="2019-11-24T09:31:49.796Z">
+<meta property="og:updated_time" content="2019-12-15T21:12:15.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stencil&#39;e Giriş">
 <meta name="twitter:description" content="Nedir?Stencil Ionic ekibi tarafından geliştirilen native web bileşenleri oluşturmak için hazırlanan bir araçtır. Bunun yanında sanal dom, reaktif veri aktarımı Typescript ve JSX gibi güçlü özellikler">
@@ -33,8 +33,10 @@
 <link rel="icon" href="/favicon.png">
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> -->
+<link rel="stylesheet" href="/css/bulma.min.css">
+<link rel="stylesheet" href="/css/all.min.css">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
@@ -86,7 +88,7 @@
     
     
 <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<script src="/js/pace.min.js"></script>
 
     
     
@@ -157,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 dakika okuma süresi (Yaklaşık 1278 kelime)
+                    9 dakika okuma süresi (Yaklaşık 1281 kelime)
                 </span>
                 
                 
@@ -170,18 +172,19 @@
             
         </h1>
         <div class="content">
-            <p><img src="https://cdn-images-1.medium.com/max/1000/1*KtY9DFv1P2mC5JDWrgdeOQ.png" alt></p>
-<h3 id="Nedir"><a href="#Nedir" class="headerlink" title="Nedir?"></a><strong>Nedir?</strong></h3><p><a href="https://stenciljs.com" target="_blank" rel="noopener">Stencil</a> Ionic ekibi tarafından geliştirilen native web bileşenleri oluşturmak için hazırlanan bir araçtır. Bunun yanında sanal dom, reaktif veri aktarımı Typescript ve JSX gibi güçlü özellikleri ile uzun vade de oldukça iddialı ve umut verici görünüyor. İlk olarak <a href="https://www.youtube.com/watch?v=UfD-k7aHkQE" target="_blank" rel="noopener">Polymer Summit 2017</a> de duyurulan Stencil ben de dahil olmak üzere bir çok kişinin ilgisini çekmiş gibi görünüyor. Bu yazı ile kısa bir giriş yaparak basit bir örnek uygulama hazırlayacağız.<br><a id="more"></a></p>
+            <p><img src="https://cdn-images-1.medium.com/max/1000/1*KtY9DFv1P2mC5JDWrgdeOQ.png" alt="Giriş Logosu"></p>
+<h3 id="Nedir"><a href="#Nedir" class="headerlink" title="Nedir?"></a><strong>Nedir?</strong></h3><p><a href="https://stenciljs.com" target="_blank" rel="noopener">Stencil</a> Ionic ekibi tarafından geliştirilen native web bileşenleri oluşturmak için hazırlanan bir araçtır. Bunun yanında sanal dom, reaktif veri aktarımı Typescript ve JSX gibi güçlü özellikleri ile uzun vade de oldukça iddialı ve umut verici görünüyor. İlk olarak <a href="https://www.youtube.com/watch?v=UfD-k7aHkQE" target="_blank" rel="noopener">Polymer Summit 2017</a> de duyurulan Stencil ben de dahil olmak üzere bir çok kişinin ilgisini çekmiş gibi görünüyor. Bu yazı ile kısa bir giriş yaparak basit bir örnek uygulama hazırlayacağız.</p>
+<a id="more"></a>
 <h3 id="Neden"><a href="#Neden" class="headerlink" title="Neden?"></a><strong>Neden?</strong></h3><p>Ekip Ionic bileşenlerinin bir sonraki sürümünü Stencil ile geliştirecek. Bu Ionic ile geliştirilmiş olan uygulamalara ciddi bir hız katacak ve aynı zamanda ciddi bir paket boyutu avantajı sağlayacak gibi görünüyor. Bunun yanı sıra Angular 4 ile Ionic uygulamarı geliştirmek hala mümkün olacak ve daha da önemlisi ve bana çok cazip gelen tarafı Angular 4 dışında Vue, React ve hatta saf Javascript ile ionic uygulamaları geliştirmek mümkün hale gelecek. Yani kısacası framework yada kütüphane bağımsız bir bileşen setine dönüşecek. Gerçekten kulağa çok hoş geliyor.</p>
 <blockquote>
 <p><strong>Dikkat:</strong> Stencil henüz alpha bile diyemeyeceğimiz çok ama çok erken bir sürümde. Bu nedenle ilk kararlı sürüm yayınlanana kadar dikkatli olunması ve değişimlerin iyi izlenmesi gerekmektedir. Çünkü bazı klavye bükücü anlamsız hatalar ve kararlı sürüme kadar bolca “breaking change” bizleri bekliyor olabilir.</p>
 </blockquote>
 <h3 id="Kurulum"><a href="#Kurulum" class="headerlink" title="Kurulum"></a><strong>Kurulum</strong></h3><p>Şu anda Stencil çok erken bir aşamada olduğu için bir cli aracı bulunmuyor. Bu nedenle hızlıca bir göz atmanın en iyi yolu ekip tarafından github üzerindeki başlangıç uygulaması reposunu bilgisayarımıza klonlamak (git clone)olacaktır. O zaman başlayalım:</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> git <span class="hljs-built_in">clone</span> https://github.com/ionic-team/stencil-starter.git ilk-stencil-ornegi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> git clone https://github.com/ionic-team/stencil-starter.git ilk-stencil-ornegi</span><br></pre></td></tr></table></figure>
 <p>Klonlama işlemi tamamlandıktan sonra bağımlılıklar için klasör içerisine girip <strong>npm</strong> yada <strong>yarn</strong> ile yükleme işlemini tamamlıyoruz.</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> <span class="hljs-built_in">cd</span> ilk-stencil-ornegi</span></span><br><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> npm install</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash">veya yarn iç<span class="hljs-keyword">in</span></span></span><br><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> yarn</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> cd ilk-stencil-ornegi</span><br><span class="line"><span class="hljs-meta">$</span> npm install</span><br><span class="line"><span class="hljs-meta">#</span>veya yarn için</span><br><span class="line"><span class="hljs-meta">$</span> yarn</span><br></pre></td></tr></table></figure>
 <p>Yükleme işlemi tamamlandıktan sonra projeyi yerel bir sunucu üzerinde ayağa kaldırmak için şu komutu çalıştırıyoruz:</p>
-<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> npm start</span></span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> veya yarn iç<span class="hljs-keyword">in</span></span></span><br><span class="line"><span class="hljs-meta">$</span><span class="hljs-bash"> yarn start</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> npm start</span><br><span class="line"><span class="hljs-meta">#</span> veya yarn için</span><br><span class="line"><span class="hljs-meta">$</span> yarn start</span><br></pre></td></tr></table></figure>
 <center><br><img src="https://cdn-images-1.medium.com/max/800/1*esy1UK8XcT2giZ3CGhdV-w.png" alt="Açılış öncesi kısa bir build işlemi gerçekleşiyor."><br></center>
 
 <center><br><img src="https://cdn-images-1.medium.com/max/800/1*0KoFL7uLIxPBLk36U1wZIg.png" alt="Build işlemi sonrasında uygulama yükleniyor."><br></center>
@@ -351,31 +354,31 @@
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Github" href="https://github.com/selcukkutuk">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Medium" href="https://medium.com/@selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Medium" href="https://medium.com/@selcukkutuk">
                 
                 <i class="fab fa-medium"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://linkedin.com/in/selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Linkedin" href="https://linkedin.com/in/selcukkutuk">
                 
                 <i class="fab fa-linkedin"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Twitter" href="https://twitter.com/selcukkutuk">
                 
                 <i class="fab fa-twitter"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com/selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Dribbble" href="https://dribbble.com/selcukkutuk">
                 
                 <i class="fab fa-dribbble"></i>
                 
@@ -674,7 +677,7 @@
                 </a> -->
                 <p class="is-size-7">
                 &copy; 2019 Selçuk Kütük&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                Powered by <a href="http://hexo.io/" target="_blank" rel="noreferrer">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noreferrer">Icarus</a>
                 
                 </p>
             </div>

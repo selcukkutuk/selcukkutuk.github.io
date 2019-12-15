@@ -3,23 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
 <title>VueJs ile Axios Kullanımı - Selçuk Kütük Kişisel Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
-    <meta name="description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte $http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıla">
+    <meta name="description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte \$http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıl">
 <meta name="keywords" content="vuejs,axios,interceptor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VueJs ile Axios Kullanımı">
 <meta property="og:url" content="https://selcukkutuk.com/vuejs-ile-axios-kullanimi/index.html">
 <meta property="og:site_name" content="Selçuk Kütük Kişisel Blog">
-<meta property="og:description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte $http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıla">
+<meta property="og:description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte \$http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıl">
 <meta property="og:locale" content="tr">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png">
-<meta property="og:updated_time" content="2019-12-01T19:19:34.826Z">
+<meta property="og:updated_time" content="2019-12-15T21:12:15.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VueJs ile Axios Kullanımı">
-<meta name="twitter:description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte $http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıla">
+<meta name="twitter:description" content="Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte \$http, Angular 2+ da ise HttpModule ve HttpClientModule (HttpModule Angular 9 ile tamamen kaldırıl">
 <meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png">
 
 
@@ -29,8 +29,10 @@
 <link rel="icon" href="/favicon.png">
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> -->
+<link rel="stylesheet" href="/css/bulma.min.css">
+<link rel="stylesheet" href="/css/all.min.css">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
@@ -82,7 +84,7 @@
     
     
 <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<script src="/js/pace.min.js"></script>
 
     
     
@@ -153,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 dakika okuma süresi (Yaklaşık 1110 kelime)
+                    7 dakika okuma süresi (Yaklaşık 1113 kelime)
                 </span>
                 
                 
@@ -166,8 +168,10 @@
             
         </h1>
         <div class="content">
-            <p><img src="https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png" alt></p>
-<p>Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte <strong>$http</strong>, Angular 2+ da ise <strong>HttpModule</strong> ve <strong>HttpClientModule</strong> (HttpModule Angular 9 ile tamamen kaldırılacak.), JQuery tarafında ise <strong>$.ajax</strong> yerleşik olarak bulunuyordu. VueJs 2.0’a kadar ise benzer şekilde <strong>vue-resource</strong> ile işlemlerimizi yerleşik olarak yapabiliyorduk. Fakat VueJs ekibi bunun VueJs 2.0 ile birlikte ayrılması gerektiğine ve 3. parti kütüphanelerin buna daha iyi hizmet edebileceğine karar verdiler. Bunun için en çok önerilen ise <strong>Axios</strong>‘tur.<br><a id="more"></a><br>Axios ile http işlemlerinizi çok basit ve etkili bir şekilde çözebilirsiniz. Varsayılan olarak Promise kullanır. Hem istemcide hemde sunucuda çalışır (SSR için uygun). VueJs ile kullanımı da oldukça basittir. Aynı zamanda async/await ile birlikte tertemiz bir kullanım sağlar. O zaman kurulum ile başlayalım incelemeye.</p>
+            <p><img src="https://cdn-images-1.medium.com/max/1000/1*nLHZ75RCadRtigFj2beCrA.png" alt="Giriş Logosu"></p>
+<p>Çok az sayıda framework/library yerleşik bir http API’si bulundurur. Örneğin AngularJs ile birlikte <strong>\$http</strong>, Angular 2+ da ise <strong>HttpModule</strong> ve <strong>HttpClientModule</strong> (HttpModule Angular 9 ile tamamen kaldırılacak.), JQuery tarafında ise <strong>\$.ajax</strong> yerleşik olarak bulunuyordu. VueJs 2.0’a kadar ise benzer şekilde <strong>vue-resource</strong> ile işlemlerimizi yerleşik olarak yapabiliyorduk. Fakat VueJs ekibi bunun VueJs 2.0 ile birlikte ayrılması gerektiğine ve 3. parti kütüphanelerin buna daha iyi hizmet edebileceğine karar verdiler. Bunun için en çok önerilen ise <strong>Axios</strong>‘tur.</p>
+<a id="more"></a>
+<p>Axios ile http işlemlerinizi çok basit ve etkili bir şekilde çözebilirsiniz. Varsayılan olarak Promise kullanır. Hem istemcide hemde sunucuda çalışır (SSR için uygun). VueJs ile kullanımı da oldukça basittir. Aynı zamanda async/await ile birlikte tertemiz bir kullanım sağlar. O zaman kurulum ile başlayalım incelemeye.</p>
 <blockquote>
 <p><strong>Not:</strong> VueJs uygulamasının zaten olduğu varsayılmıştır.</p>
 </blockquote>
@@ -184,7 +188,8 @@
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">"vue"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> axiosInstance = axios.create(&#123;</span><br><span class="line">  baseURL: <span class="hljs-string">"https://jsonplaceholder.typicode.com/"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Vue.prototype.$axios = axiosInstance;</span><br></pre></td></tr></table></figure>
 <p>Bu yapılandırmadan sonra artık axios’a bileşenlerimizden <strong>this.\$axios</strong> ile ulaşabileceğiz. Aşağıdaki örneği inceleyelim.</p>
 <figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"axios-global"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"post of posts"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"post.id"</span>&gt;</span>&#123;&#123; post.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"errors &amp;&amp; errors.length"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(error, index) of errors"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>&gt;</span></span><br><span class="line">        &#123;&#123; index + 1 &#125;&#125; - &#123;&#123; error.message &#125;&#125;</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">async</span> created() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.getPostsAsync();</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    data() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">        posts: [],</span></span><br><span class="line"><span class="hljs-undefined">        errors: []</span></span><br><span class="line"><span class="hljs-undefined">      &#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    methods: &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">async</span> getPostsAsync() &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">try</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.$axios.get(<span class="hljs-string">"/posts"</span>);</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">this</span>.posts = response.data;</span></span><br><span class="line"><span class="hljs-javascript">        &#125; <span class="hljs-keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-keyword">this</span>.errors.push(error);</span></span><br><span class="line"><span class="hljs-undefined">        &#125;</span></span><br><span class="line"><span class="hljs-undefined">      &#125;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="Global-olarak-kullanma-typescript-detayi"><a href="#Global-olarak-kullanma-typescript-detayi" class="headerlink" title="Global olarak kullanma typescript detayı"></a>Global olarak kullanma typescript detayı</h4><p>Eğer VueJs uygulamanızı typescript ile geliştiriyorsanız bu küçük kod ile global olarak kullanırken vscode gibi editörler için intellisense desteği ekleyebilirsiniz. src klasörü altında <strong>shims-axios.d.ts</strong> adı ile bir dosya oluşturun ve aşağıdaki kod parçasını içerisine ekleyin.<br><figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; AxiosInstance &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">module</span> "vue/types/vue" &#123;</span><br><span class="line">  <span class="hljs-keyword">interface</span> Vue &#123;</span><br><span class="line">    $axios: AxiosInstance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Global-olarak-kullanma-typescript-detayi"><a href="#Global-olarak-kullanma-typescript-detayi" class="headerlink" title="Global olarak kullanma typescript detayı"></a>Global olarak kullanma typescript detayı</h4><p>Eğer VueJs uygulamanızı typescript ile geliştiriyorsanız bu küçük kod ile global olarak kullanırken vscode gibi editörler için intellisense desteği ekleyebilirsiniz. src klasörü altında <strong>shims-axios.d.ts</strong> adı ile bir dosya oluşturun ve aşağıdaki kod parçasını içerisine ekleyin.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; AxiosInstance &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">declare</span> <span class="hljs-keyword">module</span> "vue/types/vue" &#123;</span><br><span class="line">  <span class="hljs-keyword">interface</span> Vue &#123;</span><br><span class="line">    $axios: AxiosInstance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Axios-request-response-interceptor"><a href="#Axios-request-response-interceptor" class="headerlink" title="Axios request/response interceptor"></a><strong>Axios request/response interceptor</strong></h3><p>Interceptor araya giren anlamında bir kelime. Peki bu ne anlama geliyor. Bir http isteği oluşturulduğunda sunucuya gitmeden önce yada istek sonucu döndükten hemen sonra merkezi bir noktada son bir dokunuş yapmamız gerekebilir. Ben çok ihtiyaç duyulan iki örnek ile bunu anlatmaya çalışacağım.</p>
 <h4 id="Request-Interceptor"><a href="#Request-Interceptor" class="headerlink" title="Request Interceptor"></a><strong>Request Interceptor</strong></h4><p>Bir istek yapacaksınız ama istek sunucuya gitmeden hemen önce header’a <strong>Authorization</strong> bilgisi eklemek istiyorsunuz. Request interceptor bunun için biçilmiş kaftandır.Örneği inceleyelim.</p>
 <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">"vue"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> axiosInstance = axios.create(&#123;</span><br><span class="line">  baseURL: <span class="hljs-string">"https://jsonplaceholder.typicode.com/"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Vue.prototype.$axios = axiosInstance;</span><br><span class="line"></span><br><span class="line">axiosInstance.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-comment">//Tabiki burada token değerini local yada session storage gibi bir yerden okumamız gerekebilir</span></span><br><span class="line">  config.headers[<span class="hljs-string">"Authorization"</span>] = <span class="hljs-string">"Bearer eyxxxx"</span>;</span><br><span class="line">  <span class="hljs-keyword">return</span> config;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -341,31 +346,31 @@
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Github" href="https://github.com/selcukkutuk">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Medium" href="https://medium.com/@selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Medium" href="https://medium.com/@selcukkutuk">
                 
                 <i class="fab fa-medium"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://linkedin.com/in/selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Linkedin" href="https://linkedin.com/in/selcukkutuk">
                 
                 <i class="fab fa-linkedin"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Twitter" href="https://twitter.com/selcukkutuk">
                 
                 <i class="fab fa-twitter"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com/selcukkutuk">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Dribbble" href="https://dribbble.com/selcukkutuk">
                 
                 <i class="fab fa-dribbble"></i>
                 
@@ -664,7 +669,7 @@
                 </a> -->
                 <p class="is-size-7">
                 &copy; 2019 Selçuk Kütük&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                Powered by <a href="http://hexo.io/" target="_blank" rel="noreferrer">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noreferrer">Icarus</a>
                 
                 </p>
             </div>

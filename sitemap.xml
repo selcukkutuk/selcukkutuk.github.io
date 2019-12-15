@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://selcukkutuk.com/vuejs-ile-axios-kullanimi/</loc>
+    
+    <lastmod>2019-12-15T21:12:15.691Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://selcukkutuk.com/stencilde-bilesenler-arasi-haberlesme/</loc>
+    
+    <lastmod>2019-12-15T21:12:15.689Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://selcukkutuk.com/stencil-e-giris/</loc>
+    
+    <lastmod>2019-12-15T21:12:15.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://selcukkutuk.com/stencil-bilesen-yasam-dongusu/</loc>
+    
+    <lastmod>2019-12-15T21:12:15.686Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://selcukkutuk.com/nuxtjs-uygulamanizi-github-actions-ile-surgesh-a-deploy-etme/</loc>
     
-    <lastmod>2019-12-11T19:54:07.182Z</lastmod>
+    <lastmod>2019-12-15T21:12:15.686Z</lastmod>
     
   </url>
   
@@ -12,34 +40,6 @@
     <loc>https://selcukkutuk.com/benkimim/index.html</loc>
     
     <lastmod>2019-12-11T19:54:07.182Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://selcukkutuk.com/vuejs-ile-axios-kullanimi/</loc>
-    
-    <lastmod>2019-12-01T19:19:34.826Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://selcukkutuk.com/stencil-bilesen-yasam-dongusu/</loc>
-    
-    <lastmod>2019-11-24T23:26:26.871Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://selcukkutuk.com/stencil-e-giris/</loc>
-    
-    <lastmod>2019-11-24T09:31:49.796Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://selcukkutuk.com/stencilde-bilesenler-arasi-haberlesme/</loc>
-    
-    <lastmod>2019-05-19T00:11:21.957Z</lastmod>
     
   </url>
   
