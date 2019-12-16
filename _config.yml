@@ -103,8 +103,3 @@ disqus_shortname: selcukkutuk
 sitemap:
   path: sitemap.xml
   template: ./sitemap_template.xml
-
-lazyload:
-  enable: true 
-  onlypost: false
-  loadingImg: # eg ./images/loading.gif

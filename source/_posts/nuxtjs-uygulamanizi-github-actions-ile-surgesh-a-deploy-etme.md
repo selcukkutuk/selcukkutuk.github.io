@@ -96,14 +96,14 @@ jobs:
 
 1.satırdaki name bizim iş akış adımız. 3. satırda yer alan bölüm ise bu aksiyon ne zaman devreye gireceği. Biz burada depoya bir push işlemi olduğunda çalışacak şekilde ayarladık. 5. satırda işlerimizi tanımlayacağımızı 6. satırda ise bu işlerden birinin build olacağını 7. satırda bu build işleminin ubuntu’nun son sürümü üzerinde çalışacağını 8. satırda build işleminin adının ne olacağını belirttik. 9. satırda ise adımlarının ne olacağını 10. satırda actions/checkout@v1 kullanılarak deponun elde edileceğini 11. satırda yeni bir adım isim tanımı yapıldı. 12. satırda actions/setup-node@v1 kullanılarak nodejs yapılandırıldı ve 14. satırda hangi sürüm olacağı belirtildi. 15. satır surge cli’ının iş akışımızı çalıştıracak olan ubuntu üzerine kurmayı 16. satır nuxtjs uygulamamızın paketlerini kurmayı 17. satır ise nuxt uygulamamızı deploy etmeye hazır hale getirip ana dizinde dist klasörüne yerleştirmemizi sağlıyor.
 
-Peki gelelim 18. satıra. Aslında diğer run komutlarından hiçbir farkı bulunmuyor. Temelde aslında surge cli ile belirli bir klasörü (./dist/) belirleyeceğimiz(uygun olduğundan emin olmalıyız) domaine almış olduğumuz token ile yayınlamayı sağlıyor diyor ve geçiyor olacaktım. Ama orada farklı olan birşey var. **\${{ secrets.SURGE_DOMAIN }}** ve **\${{ secrets.SURGE_TOKEN }}**
+Peki gelelim 18. satıra. Aslında diğer run komutlarından hiçbir farkı bulunmuyor. Temelde aslında surge cli ile belirli bir klasörü (./dist/) belirleyeceğimiz(uygun olduğundan emin olmalıyız) domaine almış olduğumuz token ile yayınlamayı sağlıyor diyor ve geçiyor olacaktım. Ama orada farklı olan birşey var. **${{ secrets.SURGE_DOMAIN }}** ve **${{ secrets.SURGE_TOKEN }}**
 
 Bunlar Github Actions içerisinde kullanacağımız ama halka açmamamız gereken alanlar. O zaman nereden tanımlanıyor gelin ona bir bakalım.
 
 ![İş akışı secret tanımlama](https://miro.medium.com/max/1332/1*pW6dH9rC5UZc_mK2arTAnw.png)
 
 Secret alanları tanımlama
-Yukarıdan resimden takip ederek buraya ulaşabilirsiniz. Çok basit bir anahtar-değer ikilisi şeklinde gizli verilerimizi tutmamıza yardımcı oluyor. Daha sonra ise iş akışı dosyamızda bunlara **\${{ secrets.ANAHTAR}}** şeklinde erişebiliyoruz. İhtiyacımız olan iki sırrı :) buraya tanımlayalım.
+Yukarıdan resimden takip ederek buraya ulaşabilirsiniz. Çok basit bir anahtar-değer ikilisi şeklinde gizli verilerimizi tutmamıza yardımcı oluyor. Daha sonra ise iş akışı dosyamızda bunlara **${{ secrets.ANAHTAR }}** şeklinde erişebiliyoruz. İhtiyacımız olan iki sırrı :) buraya tanımlayalım.
 
 > **Not:** SURGE_DOMAIN için örneğin benim-ornek-nuxt-appim.surge.sh gibi olabildiğince benzersiz bir değer vermeye çalışın. O alan adı boşta değilse hata almamız kaçınılmaz.
 
