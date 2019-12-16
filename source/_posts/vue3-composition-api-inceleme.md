@@ -11,9 +11,10 @@ tags:
 ![Giriş](..\images\vue3-composition-api-inceleme\intro.png)
 
 Vue küçük ve orta ölçekli uygulamaların hayata geçirilmesi için çok hızlı üretim yapabilmemize olanak sağlayan ve öğrenme eğrisi yüksek bir çatıdır. Fakat projelerimizin omuzlarındaki yük arttıkça Vue 2.0’ın bize sunmuş olduğu Options Api’ı işleri zorlaştırmaya başlar. Hatta zamanımızın büyük bölümünü düzenleyicimizi yukarı aşağı kaydırarak geçirdiğimizi fark ederiz.
-Genel olarak yaşanılan sorunları iki ana başlıkta toplayalım ve detaylandıralım.
 
 <!-- more -->
+
+Genel olarak yaşanılan sorunları iki ana başlıkta toplayalım ve detaylandıralım.
 
 **1 - Karmaşık bileşen kodları**
 
