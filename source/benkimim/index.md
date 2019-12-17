@@ -7,7 +7,7 @@ sharing: false
 
 #### **Özet**
 
-2001 yılında Visual Basic 6.0 ile açtırmış olduğum “**Merhaba Dünya**” mesaj kutusu ile başlayan yazılım tutkumu bugüne kadar sürdürmeyi başardım. Yazılıma olan tutkum nedeni ile Bilgisayar Mühendisliği okuyamamış olsam da bireysel çalışmalarım sonucunda birçok yazılım dili ve teknolojisi ile ilgili olarak kendimi yetiştirmeye çalıştım. Boş vakitlerimde yeni teknolojiler ile ilgili bolca makale okur ve bu teknolojiler ile ilgili PoC hazırlarım. Yazılım ve teknolojileri üzerine edindiğim deneyilerimi anlatmak amacıyla blog yazmaya çalışırım.
+2001 yılında Visual Basic 6.0 ile açtırmış olduğum “**Merhaba Dünya**” mesaj kutusu ile başlayan yazılım tutkumu bugüne kadar sürdürmeyi başardım. Yazılıma olan tutkum nedeni ile Bilgisayar Mühendisliği okuyamamış olsam da bireysel çalışmalarım sonucunda birçok yazılım dili ve teknolojisi ile ilgili olarak kendimi yetiştirmeye çalıştım. Boş vakitlerimde yeni teknolojiler ile ilgili bolca makale okur ve bu teknolojiler ile ilgili PoC hazırlarım. Yazılım ve teknolojileri üzerine edindiğim deneyimlerimi anlatmak amacıyla blog yazmaya çalışırım.
 
 #### **Eğitim Bilgileri**
 
