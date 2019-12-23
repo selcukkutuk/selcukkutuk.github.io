@@ -25,10 +25,10 @@ navbar:
     # Navigation bar menu links
     menu:
         Ana Sayfa: /
-        Ben Kimim?: /benkimim
-        Arşiv: /arsiv
-        Kategoriler: /kategoriler
-        Etiketler: /etiketler
+        Ben Kimim?: /benkimim/
+        Arşiv: /arsiv/
+        Kategoriler: /kategoriler/
+        Etiketler: /etiketler/
     # Navigation bar links to be shown on the right
     links:
         # Download on GitHub:

@@ -1,6 +1,7 @@
 ---
 title: Vue 3 - Composition Api İncelemesi
 date: 2019-12-16 16:45:45
+toc: true
 categories:
   - VueJs
 tags:
@@ -8,19 +9,21 @@ tags:
   - compositionapi
 ---
 
-![Giriş](..\images\vue3-composition-api-inceleme\intro.png)
+![Giriş](../images/vue3-composition-api-inceleme/intro.png)
 
 Vue küçük ve orta ölçekli uygulamaların hayata geçirilmesi için çok hızlı üretim yapabilmemize olanak sağlayan ve öğrenme eğrisi yüksek bir çatıdır. Fakat projelerimizin omuzlarındaki yük arttıkça Vue 2.0’ın bize sunmuş olduğu Options Api’ı işleri zorlaştırmaya başlar. Hatta zamanımızın büyük bölümünü düzenleyicimizi yukarı aşağı kaydırarak geçirdiğimizi fark ederiz.
 
 <!-- more -->
 
+# Neden ?
+
 Genel olarak yaşanılan sorunları iki ana başlıkta toplayalım ve detaylandıralım.
 
-**1 - Karmaşık bileşen kodları**
+## Karmaşık bileşen kodları
 
 Basit bir Vue bileşeni yazarken Options Api bize çok pratik gelir. Fakat zaman içerisinde bileşenin kodlarının artması ile kod okumak ve mantığı anlamak kendi yazdığımız bölümlerde bile zor hale gelir. Eğer takım halinde çalışıyorsak bunu anlamak daha da zorlaşır. Bunun nedeni ise Options Api’ı bizi reactive değişkenleri(data), metotları(methods), hesaplanan değerleri(computed) vb. bir yerde yazmaya zorlamasıdır.
 
-**2 - Ortak mantıkları ayırma ve yeniden kullanma sorunu**
+## Ortak mantıkları ayırma ve yeniden kullanma sorunu
 
 Bileşenler arasında ortak kullanılan mantıkları organize etmenin basit bir yolunun bulunmuyor olması da işleri karmaşık hale getiren bir diğer unsur. Bu konuda çözüm olması açısından mixinler bulunuyor olsa da mixinlerin sayısı arttıkça bileşenlerdeki tanımlamar ile çakışma/karışma durumları da artıyor. Mixinlerin yol açtığı diğer bir sorun ise, her defasında hangi mixinde neyin yer aldığına bakılması ihtiyacıdır. Buda geliştirme süresini etkilemektedir.
 
@@ -84,7 +87,7 @@ Uygulamanın işlevleri;
 2. Kullanıcı hareketsizlik süresini takip etme
 3. Uygulamanın belirli bölümlerini gösterip gizleme
 
-### **Options Api**
+# Options Api
 
 Bu varsayılan olarak kullandığımız api.
 
@@ -180,11 +183,11 @@ Bu varsayılan olarak kullandığımız api.
 </script>
 ```
 
-### **Composition Api**
+# Composition Api
 
 ![Options Api <-> Composition Api](../images/vue3-composition-api-inceleme/option-vs-composition.png)
 
-#### **Önemli yeni kavramlar**
+## Önemli yeni kavramlar
 
 1. **reactive:** Düz bir nesneyi reaktif bir nesneye dönüştürür.
 
@@ -196,7 +199,7 @@ Bu varsayılan olarak kullandığımız api.
 
 Api hakkında daha detaylı bilgiyi [buradan](https://vue-composition-api-rfc.netlify.com/api.html) alabilirsiniz.
 
-#### **Uygulanması**
+## Uygulanması
 
 Aynı işlevin dağılmış parçaları birleştirelim ve birer fonksiyon haline getirelim. Örneğin ürün işlemlerinin özelliklerini, metotlarını, yaşam döngüsü metotlarını **useProduct()** fonksiyonu ile bir araya toplayalım. Bu sayede artık ürün işlemleri ile ilgili bir gözden geçirme yapacağımız zaman nereye bakmamız gerektiiğini kolayca anlayabiliriz. Daha sonra **useProduct()** metodununun return ettiklerini **setup()** içerisinden [destructuring assignment](https://medium.com/@thrkardak/javascript-harikalar%C4%B1-3-destructuring-assignment-64cbb9fe3355) ile alalım ve bizde **setup()** içerisinden Vue'nun kullanabilmesi için return edelim.
 
@@ -313,7 +316,7 @@ Aynı işlevin dağılmış parçaları birleştirelim ve birer fonksiyon haline
 </script>
 ```
 
-### **Reuseable Composition Api**
+# Reuseable Composition Api
 
 İşlevleri bir araya topladık ve artık ne için nereye bakmamız gerektiğini biliyoruz. Fakat bu örnek için **hareketsizlik süresi izleme** ve **belirli bölümleri açıp kapatma** işlevleri daha sonra uygulamanın diğer bölümlerinde de kullanılabilir gibi duruyor. O halde bu bölümleri farklı bir dosyaya çıkarmamız daha uygun olacaktır. Bu sayede ihtiyacımız olan parçaları diğer bileşenlerimizden de çağırabilir kullanabiliriz.
 
@@ -446,13 +449,13 @@ export function useActivityTracker() {
 }
 ```
 
-## Bitirirken
+# Bitirirken
 
 Vue 2.x ile Composition Api ile yaşadığım deneyimi anlatmaya çalıştım. Tam olarak hangi şekilde uygulanması daha doğru olur gibi soruların net bir cevabı bulunmuyor. 2020 yılında Vue 3.0'ın yayınlanması ve kullanım oranının artması ile desenler daha belirgin hale gelecektir. Typescript için makale içerisinde kod örneği eklemedim. Fakat aşağıdaki bağlantıda verdiğim github deposunda her iki örneğin çalışır halini bulabilrisiniz. İyi çalışmalar diliyorum.
 
 **Örnek Github Adresi:** [https://github.com/selcukkutuk/vue-composition-api-examples](https://github.com/selcukkutuk/vue-composition-api-examples)
 
-## Kaynaklar
+# Kaynaklar
 
 1. https://www.youtube.com/watch?v=V-xK3sbc7xI
 2. https://css-tricks.com/an-early-look-at-the-vue-3-composition-api-in-the-wild/
