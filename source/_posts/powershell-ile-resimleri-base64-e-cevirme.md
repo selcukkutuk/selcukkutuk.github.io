@@ -1,5 +1,5 @@
 ---
-title: İpucu - Powershell ile Resimleri Base64'e çevirme
+title: İpucu - Powershell ile Resimleri Base64'e Çevirme
 date: 2020-10-22 12:31:12
 categories:
   - Tips
