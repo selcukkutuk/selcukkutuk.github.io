@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>Vue 3 - Composition Api İncelemesi - Selçuk Kütük Kişisel Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <meta name="description" content="Vue küçük ve orta ölçekli uygulamaların hayata geçirilmesi için çok hızlı üretim yapabilmemize olanak sağlayan ve öğrenme eğrisi yüksek bir çatıdır. Fakat projelerimizin omuzlarındaki yük arttıkça Vu">
+<meta name="keywords" content="vuejs,compositionapi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue 3 - Composition Api İncelemesi">
+<meta property="og:url" content="https://selcukkutuk.com/vue3-composition-api-inceleme/index.html">
+<meta property="og:site_name" content="Selçuk Kütük Kişisel Blog">
+<meta property="og:description" content="Vue küçük ve orta ölçekli uygulamaların hayata geçirilmesi için çok hızlı üretim yapabilmemize olanak sağlayan ve öğrenme eğrisi yüksek bir çatıdır. Fakat projelerimizin omuzlarındaki yük arttıkça Vu">
+<meta property="og:locale" content="tr">
+<meta property="og:image" content="https://selcukkutuk.com/images/vue3-composition-api-inceleme/intro.png">
+<meta property="og:image" content="https://selcukkutuk.com/images/vue3-composition-api-inceleme/option-vs-composition.png">
+<meta property="og:updated_time" content="2020-01-01T10:51:51.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue 3 - Composition Api İncelemesi">
+<meta name="twitter:description" content="Vue küçük ve orta ölçekli uygulamaların hayata geçirilmesi için çok hızlı üretim yapabilmemize olanak sağlayan ve öğrenme eğrisi yüksek bir çatıdır. Fakat projelerimizin omuzlarındaki yük arttıkça Vu">
+<meta name="twitter:image" content="https://selcukkutuk.com/images/vue3-composition-api-inceleme/intro.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> -->
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-30109784-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-30109784-1');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="/js/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <!-- <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                heyoo
+            
+            </a>
+        </div> -->
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Ana Sayfa</a>
+                
+                <a class="navbar-item" href="/benkimim/">Ben Kimim?</a>
+                
+                <a class="navbar-item" href="/arsiv/">Arşiv</a>
+                
+                <a class="navbar-item" href="/kategoriler/">Kategoriler</a>
+                
+                <a class="navbar-item" href="/etiketler/">Etiketler</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Katalog" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-16T13:45:45.000Z">16.12.2019</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/kategoriler/VueJs/">VueJs</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 dakika okuma süresi (Yaklaşık 1825 kelime)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Vue 3 - Composition Api İncelemesi
+            
+        </h1>
+        <div class="content">
+            <p><img src="../images/vue3-composition-api-inceleme/intro.png" alt="Giriş"></p>
+<p>Vue küçük ve orta ölçekli uygulamaların hayata geçirilmesi için çok hızlı üretim yapabilmemize olanak sağlayan ve öğrenme eğrisi yüksek bir çatıdır. Fakat projelerimizin omuzlarındaki yük arttıkça Vue 2.0’ın bize sunmuş olduğu Options Api’ı işleri zorlaştırmaya başlar. Hatta zamanımızın büyük bölümünü düzenleyicimizi yukarı aşağı kaydırarak geçirdiğimizi fark ederiz.</p>
+<a id="more"></a>
+<h1 id="Neden"><a href="#Neden" class="headerlink" title="Neden ?"></a>Neden ?</h1><p>Genel olarak yaşanılan sorunları iki ana başlıkta toplayalım ve detaylandıralım.</p>
+<h2 id="Karmasik-bilesen-kodlari"><a href="#Karmasik-bilesen-kodlari" class="headerlink" title="Karmaşık bileşen kodları"></a>Karmaşık bileşen kodları</h2><p>Basit bir Vue bileşeni yazarken Options Api bize çok pratik gelir. Fakat zaman içerisinde bileşenin kodlarının artması ile kod okumak ve mantığı anlamak kendi yazdığımız bölümlerde bile zor hale gelir. Eğer takım halinde çalışıyorsak bunu anlamak daha da zorlaşır. Bunun nedeni ise Options Api’ı bizi reactive değişkenleri(data), metotları(methods), hesaplanan değerleri(computed) vb. bir yerde yazmaya zorlamasıdır.</p>
+<h2 id="Ortak-mantiklari-ayirma-ve-yeniden-kullanma-sorunu"><a href="#Ortak-mantiklari-ayirma-ve-yeniden-kullanma-sorunu" class="headerlink" title="Ortak mantıkları ayırma ve yeniden kullanma sorunu"></a>Ortak mantıkları ayırma ve yeniden kullanma sorunu</h2><p>Bileşenler arasında ortak kullanılan mantıkları organize etmenin basit bir yolunun bulunmuyor olması da işleri karmaşık hale getiren bir diğer unsur. Bu konuda çözüm olması açısından mixinler bulunuyor olsa da mixinlerin sayısı arttıkça bileşenlerdeki tanımlamar ile çakışma/karışma durumları da artıyor. Mixinlerin yol açtığı diğer bir sorun ise, her defasında hangi mixinde neyin yer aldığına bakılması ihtiyacıdır. Buda geliştirme süresini etkilemektedir.</p>
+<p>Vue 3 tasarlanırken bu sorunlara çözüm olarak ortaya Composition Api çıktı. Öncelikle üzerinde tartışılan ve tam olarak tamamlanmış bir yapı olmadığını hatırlatmakta fayda var.</p>
+<p>Vue 2.x ile kullanabilmek için <strong>@vue/composition-api</strong> paketi bulunuyor. O zaman adım adım bir uygulama oluşturalım ve neler getiriyor bakalım.</p>
+<p>İlk olarak eğer kurulu değil ise vue-cli aracını kurarak başlayalım.</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install –g @vue/cli</span><br></pre></td></tr></table></figure>
+<p>Kurulum tamamlandıktan sonra bir Vue uygulaması oluşturalım.</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create vue-composition-app</span><br></pre></td></tr></table></figure>
+<p>Şimdi vue-cli uygulama şablonunu oluşturup paketleri yükleyecek.<br>Sıra geldi Composition Api’ı yüklemeye. Bunu da aşağıdaki komut ile yapıyoruz.</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @vue/composition-api</span><br></pre></td></tr></table></figure>
+<p>Artık kullanmaya hazırız. İlk olarak src altında yer alan <strong>main.js</strong> dosyamıza gidelim ve eklentimizi Vue’ya bildirelim.</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> VueCompositionApi <span class="hljs-keyword">from</span> <span class="hljs-string">"@vue/composition-api"</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(VueCompositionApi);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// ...</span></span><br></pre></td></tr></table></figure>
+<p>Bu işlem ile Composition Api’ı kullanabilmemiz için tasarlanmış <strong>setup()</strong> adında yeni bir metot bileşenlerde kullanıma hazır hale gelmiş oldu.</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">    data() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;&#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    methods: &#123;&#125;</span></span><br><span class="line"><span class="hljs-undefined">    setup()&#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-comment">//Composition Api'ı kullanmak için oluşturulan giriş noktası</span></span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Şimdi sırasıyla örnek uygulamamızı <strong>Options Api</strong>, <strong>Composition Api</strong> ve <strong>Reuseable Composition Api</strong> ile düzenleyelim ve farklılıklarını inceleyelim.</p>
+<p>Uygulamanın işlevleri;</p>
+<ol>
+<li>Ürün ekleme listeleme</li>
+<li>Kullanıcı hareketsizlik süresini takip etme</li>
+<li>Uygulamanın belirli bölümlerini gösterip gizleme</li>
+</ol>
+<h1 id="Options-Api"><a href="#Options-Api" class="headerlink" title="Options Api"></a>Options Api</h1><p>Bu varsayılan olarak kullandığımız api.</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row mt-5"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12 text-center"</span>&gt;</span></span><br><span class="line">      Hareketsiz kalınan süre</span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-pill badge-warning"</span>&gt;</span>&#123;&#123;idleTime&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> saniye</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12 text-right mb-2"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-info mr-1"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"toggleShow"</span>&gt;</span></span><br><span class="line">        Ürün Listesini Göster/Gizle</span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-pill badge-dark"</span>&gt;</span>&#123;&#123;productCount&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-success"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"addProduct"</span>&gt;</span>Ürün Ekle<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12"</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"show"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-striped table-hover"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">thead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"thead-dark"</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Adı<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Fiyatı<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"product in products"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"product.id"</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;product.id&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;product.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">              <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-lira-sign"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span></span><br><span class="line">              &#123;&#123;product.price&#125;&#125;</span><br><span class="line">            <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">    created() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">this</span>.products.push(&#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Ürün 1"</span>, <span class="hljs-attr">price</span>: (<span class="hljs-number">10</span>).toFixed(<span class="hljs-number">2</span>) &#125;);</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">this</span>.intervalIdleTime = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.idleTime++, <span class="hljs-number">1000</span>);</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">this</span>.activityEvents.forEach(<span class="hljs-function"><span class="hljs-params">eventName</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-built_in">document</span>.addEventListener(eventName, <span class="hljs-keyword">this</span>.activity, <span class="hljs-literal">true</span>);</span></span><br><span class="line"><span class="hljs-undefined">      &#125;);</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    destroyed() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">this</span>.activityEvents.forEach(<span class="hljs-function"><span class="hljs-params">eventName</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-built_in">document</span>.removeEventListener(eventName, <span class="hljs-keyword">this</span>.activity, <span class="hljs-literal">true</span>);</span></span><br><span class="line"><span class="hljs-undefined">      &#125;);</span></span><br><span class="line"><span class="hljs-javascript">      clearInterval(<span class="hljs-keyword">this</span>.intervalIdleTime);</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    data() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">        activityEvents: [</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-string">"mousedown"</span>,</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-string">"mousemove"</span>,</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-string">"keydown"</span>,</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-string">"scroll"</span>,</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-string">"touchstart"</span></span></span><br><span class="line"><span class="hljs-undefined">        ],</span></span><br><span class="line"><span class="hljs-javascript">        show: <span class="hljs-literal">true</span>,</span></span><br><span class="line"><span class="hljs-undefined">        products: [],</span></span><br><span class="line"><span class="hljs-undefined">        idleTime: 0,</span></span><br><span class="line"><span class="hljs-javascript">        intervalIdleTime: <span class="hljs-literal">null</span></span></span><br><span class="line"><span class="hljs-undefined">      &#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    methods: &#123;</span></span><br><span class="line"><span class="hljs-undefined">      toggleShow() &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">this</span>.show = !<span class="hljs-keyword">this</span>.show;</span></span><br><span class="line"><span class="hljs-undefined">      &#125;,</span></span><br><span class="line"><span class="hljs-undefined">      addProduct() &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">this</span>.products.push(&#123;</span></span><br><span class="line"><span class="hljs-javascript">          id: <span class="hljs-keyword">this</span>.products.length + <span class="hljs-number">1</span>,</span></span><br><span class="line"><span class="hljs-javascript">          name: <span class="hljs-string">"Ürün "</span> + (<span class="hljs-keyword">this</span>.products.length + <span class="hljs-number">1</span>).toString(),</span></span><br><span class="line"><span class="hljs-javascript">          price: <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>).toFixed(<span class="hljs-number">2</span>)</span></span><br><span class="line"><span class="hljs-undefined">        &#125;);</span></span><br><span class="line"><span class="hljs-undefined">      &#125;,</span></span><br><span class="line"><span class="hljs-undefined">      activity() &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">this</span>.idleTime = <span class="hljs-number">0</span>;</span></span><br><span class="line"><span class="hljs-undefined">      &#125;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;,</span></span><br><span class="line"><span class="hljs-undefined">    computed: &#123;</span></span><br><span class="line"><span class="hljs-undefined">      productCount() &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.products.length;</span></span><br><span class="line"><span class="hljs-undefined">      &#125;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Composition-Api"><a href="#Composition-Api" class="headerlink" title="Composition Api"></a>Composition Api</h1><p><img src="../images/vue3-composition-api-inceleme/option-vs-composition.png" alt="Options Api &lt;-&gt; Composition Api"></p>
+<h2 id="Onemli-yeni-kavramlar"><a href="#Onemli-yeni-kavramlar" class="headerlink" title="Önemli yeni kavramlar"></a>Önemli yeni kavramlar</h2><ol>
+<li><p><strong>reactive:</strong> Düz bir nesneyi reaktif bir nesneye dönüştürür.</p>
+</li>
+<li><p><strong>ref:</strong> Bir özelliği reaktif hale getirmek için kullanıyoruz.</p>
+</li>
+<li><p><strong>isRef:</strong> Bir özellik reaktif mi diye kontrol etmek için kullanıyoruz.</p>
+</li>
+<li><p><strong>toRefs:</strong> Reaktif bir nesnenin özelliklerini birer reaktif özellik olarak alabilmemizi sağlar. Büyük reaktif nesneleri return ederken kullanışlıdır.</p>
+</li>
+</ol>
+<p>Api hakkında daha detaylı bilgiyi <a href="https://vue-composition-api-rfc.netlify.com/api.html" target="_blank" rel="noopener">buradan</a> alabilirsiniz.</p>
+<h2 id="Uygulanmasi"><a href="#Uygulanmasi" class="headerlink" title="Uygulanması"></a>Uygulanması</h2><p>Aynı işlevin dağılmış parçaları birleştirelim ve birer fonksiyon haline getirelim. Örneğin ürün işlemlerinin özelliklerini, metotlarını, yaşam döngüsü metotlarını <strong>useProduct()</strong> fonksiyonu ile bir araya toplayalım. Bu sayede artık ürün işlemleri ile ilgili bir gözden geçirme yapacağımız zaman nereye bakmamız gerektiiğini kolayca anlayabiliriz. Daha sonra <strong>useProduct()</strong> metodununun return ettiklerini <strong>setup()</strong> içerisinden <a href="https://medium.com/@thrkardak/javascript-harikalar%C4%B1-3-destructuring-assignment-64cbb9fe3355" target="_blank" rel="noopener">destructuring assignment</a> ile alalım ve bizde <strong>setup()</strong> içerisinden Vue’nun kullanabilmesi için return edelim.</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row mt-5"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12 text-center"</span>&gt;</span></span><br><span class="line">      Hareketsiz kalınan süre</span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-pill badge-warning"</span>&gt;</span>&#123;&#123;idleTime&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> saniye</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12 text-right mb-2"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-info mr-1"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"toggleShow"</span>&gt;</span></span><br><span class="line">        Ürün Listesini Göster/Gizle</span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-pill badge-dark"</span>&gt;</span>&#123;&#123;productCount&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-success"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"addProduct"</span>&gt;</span>Ürün Ekle<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12"</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"show"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-striped table-hover"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">thead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"thead-dark"</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Adı<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Fiyatı<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"product in products"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"product.id"</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;product.id&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;product.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">              <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-lira-sign"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span></span><br><span class="line">              &#123;&#123;product.price&#125;&#125;</span><br><span class="line">            <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">import</span> &#123; ref, onMounted, onUnmounted, computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@vue/composition-api"</span>;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">    setup() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">const</span> &#123; show, toggleShow &#125; = useToggleShow();</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">const</span> &#123; products, productCount, addProduct &#125; = useProduct();</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">const</span> &#123; idleTime &#125; = useActivityTracker();</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">        show,</span></span><br><span class="line"><span class="hljs-undefined">        toggleShow,</span></span><br><span class="line"><span class="hljs-undefined">        products,</span></span><br><span class="line"><span class="hljs-undefined">        productCount,</span></span><br><span class="line"><span class="hljs-undefined">        addProduct,</span></span><br><span class="line"><span class="hljs-undefined">        idleTime</span></span><br><span class="line"><span class="hljs-undefined">      &#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useToggleShow</span>(<span class="hljs-params">def = true</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> show = ref(def);</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> toggleShow = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">      show.value = !show.value;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">return</span> &#123; show, toggleShow &#125;;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;</span></span><br><span class="line"><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useProduct</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> products = ref([]);</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> productCount = computed(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> products.value.length);</span></span><br><span class="line"><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> addProduct = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">      products.value.push(&#123;</span></span><br><span class="line"><span class="hljs-undefined">        id: products.value.length + 1,</span></span><br><span class="line"><span class="hljs-javascript">        name: <span class="hljs-string">"Ürün "</span> + (products.value.length + <span class="hljs-number">1</span>).toString(),</span></span><br><span class="line"><span class="hljs-javascript">        price: <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>).toFixed(<span class="hljs-number">2</span>)</span></span><br><span class="line"><span class="hljs-undefined">      &#125;);</span></span><br><span class="line"><span class="hljs-undefined">    &#125;;</span></span><br><span class="line"><span class="hljs-javascript">    onMounted(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">      products.value.push(&#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Ürün 1"</span>, <span class="hljs-attr">price</span>: (<span class="hljs-number">10</span>).toFixed(<span class="hljs-number">2</span>) &#125;);</span></span><br><span class="line"><span class="hljs-undefined">    &#125;);</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">return</span> &#123; products, productCount, addProduct &#125;;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;</span></span><br><span class="line"><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useActivityTracker</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">let</span> intervalIdleTime = <span class="hljs-literal">null</span>;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> idleTime = ref(<span class="hljs-number">0</span>);</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> activityEvents = [</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-string">"mousedown"</span>,</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-string">"mousemove"</span>,</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-string">"keydown"</span>,</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-string">"scroll"</span>,</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-string">"touchstart"</span></span></span><br><span class="line"><span class="hljs-undefined">    ];</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">activity</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-undefined">      idleTime.value = 0;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-javascript">    intervalIdleTime = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> idleTime.value++, <span class="hljs-number">1000</span>);</span></span><br><span class="line"><span class="hljs-javascript">    onMounted(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">      activityEvents.forEach(<span class="hljs-function"><span class="hljs-params">eventName</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-built_in">document</span>.addEventListener(eventName, activity, <span class="hljs-literal">true</span>);</span></span><br><span class="line"><span class="hljs-undefined">      &#125;);</span></span><br><span class="line"><span class="hljs-undefined">    &#125;);</span></span><br><span class="line"><span class="hljs-javascript">    onUnmounted(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">      activityEvents.forEach(<span class="hljs-function"><span class="hljs-params">eventName</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-built_in">document</span>.removeEventListener(eventName, activity, <span class="hljs-literal">true</span>);</span></span><br><span class="line"><span class="hljs-undefined">      &#125;);</span></span><br><span class="line"><span class="hljs-undefined">      clearInterval(intervalIdleTime);</span></span><br><span class="line"><span class="hljs-undefined">    &#125;);</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">      idleTime</span></span><br><span class="line"><span class="hljs-undefined">    &#125;;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Reuseable-Composition-Api"><a href="#Reuseable-Composition-Api" class="headerlink" title="Reuseable Composition Api"></a>Reuseable Composition Api</h1><p>İşlevleri bir araya topladık ve artık ne için nereye bakmamız gerektiğini biliyoruz. Fakat bu örnek için <strong>hareketsizlik süresi izleme</strong> ve <strong>belirli bölümleri açıp kapatma</strong> işlevleri daha sonra uygulamanın diğer bölümlerinde de kullanılabilir gibi duruyor. O halde bu bölümleri farklı bir dosyaya çıkarmamız daha uygun olacaktır. Bu sayede ihtiyacımız olan parçaları diğer bileşenlerimizden de çağırabilir kullanabiliriz.</p>
+<blockquote>
+<p>Burada benim izlediğim ve diğer okuduğum makalelerde de tercih edilen yöntem, bileşen ile sıkı sıkıya bağlı olan bölümlerin bileşen içerisinde bırakılması, tekrar kullanılabileceği öngörülen bölümlerin ayrı dosyaya çıkarılmasıdır.</p>
+</blockquote>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row mt-5"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12 text-center"</span>&gt;</span></span><br><span class="line">      Hareketsiz kalınan süre</span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-pill badge-warning"</span>&gt;</span>&#123;&#123;idleTime&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> saniye</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12 text-right mb-2"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-info mr-1"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"toggleState"</span>&gt;</span></span><br><span class="line">        Ürün Listesini Göster/Gizle</span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"badge badge-pill badge-dark"</span>&gt;</span>&#123;&#123;productCount&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-success"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"addProduct"</span>&gt;</span>Ürün Ekle<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-12"</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"state"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"table table-striped table-hover"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">thead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"thead-dark"</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Adı<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Fiyatı<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"product in products"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"product.id"</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;product.id&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;product.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">              <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fas fa-lira-sign"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span></span><br><span class="line">              &#123;&#123;product.price&#125;&#125;</span><br><span class="line">            <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">          <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">import</span> &#123; ref, onMounted, computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@vue/composition-api"</span>;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">import</span> &#123; useActivePassive &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"../composable/active-passive"</span>;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">import</span> &#123; useActivityTracker &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"../composable/activity-tracker"</span>;</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">    setup() &#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">const</span> &#123; state, toggleState &#125; = useActivePassive();</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">const</span> &#123; products, productCount, addProduct &#125; = useProduct();</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">const</span> &#123; idleTime &#125; = useActivityTracker();</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">        state,</span></span><br><span class="line"><span class="hljs-undefined">        toggleState,</span></span><br><span class="line"><span class="hljs-undefined">        products,</span></span><br><span class="line"><span class="hljs-undefined">        productCount,</span></span><br><span class="line"><span class="hljs-undefined">        addProduct,</span></span><br><span class="line"><span class="hljs-undefined">        idleTime</span></span><br><span class="line"><span class="hljs-undefined">      &#125;;</span></span><br><span class="line"><span class="hljs-undefined">    &#125;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;;</span></span><br><span class="line"><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useProduct</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> products = ref([]);</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> productCount = computed(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> products.value.length);</span></span><br><span class="line"><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">const</span> addProduct = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-undefined">      products.value.push(&#123;</span></span><br><span class="line"><span class="hljs-undefined">        id: products.value.length + 1,</span></span><br><span class="line"><span class="hljs-javascript">        name: <span class="hljs-string">"Ürün "</span> + (products.value.length + <span class="hljs-number">1</span>).toString(),</span></span><br><span class="line"><span class="hljs-javascript">        price: <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>).toFixed(<span class="hljs-number">2</span>)</span></span><br><span class="line"><span class="hljs-undefined">      &#125;);</span></span><br><span class="line"><span class="hljs-undefined">    &#125;;</span></span><br><span class="line"><span class="hljs-javascript">    onMounted(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="hljs-javascript">      products.value.push(&#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Ürün 1"</span>, <span class="hljs-attr">price</span>: (<span class="hljs-number">10</span>).toFixed(<span class="hljs-number">2</span>) &#125;);</span></span><br><span class="line"><span class="hljs-undefined">    &#125;);</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">return</span> &#123; products, productCount, addProduct &#125;;</span></span><br><span class="line"><span class="hljs-undefined">  &#125;</span></span><br><span class="line"><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>active-passive.js</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@vue/composition-api"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useActivePassive</span>(<span class="hljs-params">def = true</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> state = ref(def);</span><br><span class="line">  <span class="hljs-keyword">const</span> toggleState = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    state.value = !state.value;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="hljs-keyword">return</span> &#123; state, toggleState &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>activity-tracker.js</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; ref, onMounted, onUnmounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@vue/composition-api"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useActivityTracker</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> intervalIdleTime = <span class="hljs-literal">null</span>;</span><br><span class="line">  <span class="hljs-keyword">const</span> idleTime = ref(<span class="hljs-number">0</span>);</span><br><span class="line">  <span class="hljs-keyword">const</span> activityEvents = [</span><br><span class="line">    <span class="hljs-string">"mousedown"</span>,</span><br><span class="line">    <span class="hljs-string">"mousemove"</span>,</span><br><span class="line">    <span class="hljs-string">"keydown"</span>,</span><br><span class="line">    <span class="hljs-string">"scroll"</span>,</span><br><span class="line">    <span class="hljs-string">"touchstart"</span></span><br><span class="line">  ];</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">activity</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    idleTime.value = <span class="hljs-number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  intervalIdleTime = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> idleTime.value++, <span class="hljs-number">1000</span>);</span><br><span class="line">  onMounted(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    activityEvents.forEach(<span class="hljs-function"><span class="hljs-params">eventName</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-built_in">document</span>.addEventListener(eventName, activity, <span class="hljs-literal">true</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  onUnmounted(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    activityEvents.forEach(<span class="hljs-function"><span class="hljs-params">eventName</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-built_in">document</span>.removeEventListener(eventName, activity, <span class="hljs-literal">true</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    clearInterval(intervalIdleTime);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">    idleTime</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Bitirirken"><a href="#Bitirirken" class="headerlink" title="Bitirirken"></a>Bitirirken</h1><p>Vue 2.x ile Composition Api ile yaşadığım deneyimi anlatmaya çalıştım. Tam olarak hangi şekilde uygulanması daha doğru olur gibi soruların net bir cevabı bulunmuyor. 2020 yılında Vue 3.0’ın yayınlanması ve kullanım oranının artması ile desenler daha belirgin hale gelecektir. Typescript için makale içerisinde kod örneği eklemedim. Fakat aşağıdaki bağlantıda verdiğim github deposunda her iki örneğin çalışır halini bulabilrisiniz. İyi çalışmalar diliyorum.</p>
+<p><strong>Örnek Github Adresi:</strong> <a href="https://github.com/selcukkutuk/vue-composition-api-examples" target="_blank" rel="noopener">https://github.com/selcukkutuk/vue-composition-api-examples</a></p>
+<h1 id="Kaynaklar"><a href="#Kaynaklar" class="headerlink" title="Kaynaklar"></a>Kaynaklar</h1><ol>
+<li><a href="https://www.youtube.com/watch?v=V-xK3sbc7xI" target="_blank" rel="noopener">https://www.youtube.com/watch?v=V-xK3sbc7xI</a></li>
+<li><a href="https://css-tricks.com/an-early-look-at-the-vue-3-composition-api-in-the-wild/" target="_blank" rel="noopener">https://css-tricks.com/an-early-look-at-the-vue-3-composition-api-in-the-wild/</a></li>
+<li><a href="https://vue-composition-api-rfc.netlify.com/" target="_blank" rel="noopener">https://vue-composition-api-rfc.netlify.com/</a></li>
+<li><a href="https://medium.com/javascript-in-plain-english/how-to-use-composition-api-in-vue-967fc9b8393c" target="_blank" rel="noopener">https://medium.com/javascript-in-plain-english/how-to-use-composition-api-in-vue-967fc9b8393c</a></li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/etiketler/compositionapi/">compositionapi</a>, <a class="has-link-grey -link" href="/etiketler/vuejs/">vuejs</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/powershell-ile-resimleri-base64-e-cevirme/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">İpucu - Powershell ile Resimleri Base64&#39;e çevirme</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/nuxtjs-uygulamanizi-github-actions-ile-surgesh-a-deploy-etme/">
+                <span class="level-item">NuxtJs Uygulamanızı Github Actions ile Surge.sh’a Deploy Etme</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Yorumlar</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://selcukkutuk.com/vue3-composition-api-inceleme/';
+        this.page.identifier = 'vue3-composition-api-inceleme/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'selcukkutuk' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <figure class="image container is-128x128 has-mb-6" style="width: 128px;height: 128px;">
+                            <img class="is-rounded" style="border: 2px solid white;box-shadow: 0 0 10px gray" src="/avatar.png" alt="Selçuk Kütük">
+                        </figure>
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Selçuk Kütük
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        i don&#39;t know but i can learn
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Turkey</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Gönderiler
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Kategoriler
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiketler
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/selcukkutuk">
+                TAKİP ET</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Github" href="https://github.com/selcukkutuk">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Medium" href="https://medium.com/@selcukkutuk">
+                
+                <i class="fab fa-medium"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Linkedin" href="https://linkedin.com/in/selcukkutuk">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Twitter" href="https://twitter.com/selcukkutuk">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noreferrer" title="Dribbble" href="https://dribbble.com/selcukkutuk">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Katalog
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Neden">
+        <span class="has-mr-6">1</span>
+        <span>Neden ?</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Karmasik-bilesen-kodlari">
+        <span class="has-mr-6">1.1</span>
+        <span>Karmaşık bileşen kodları</span>
+        </a></li><li>
+        <a class="is-flex" href="#Ortak-mantiklari-ayirma-ve-yeniden-kullanma-sorunu">
+        <span class="has-mr-6">1.2</span>
+        <span>Ortak mantıkları ayırma ve yeniden kullanma sorunu</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Options-Api">
+        <span class="has-mr-6">2</span>
+        <span>Options Api</span>
+        </a></li><li>
+        <a class="is-flex" href="#Composition-Api">
+        <span class="has-mr-6">3</span>
+        <span>Composition Api</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Onemli-yeni-kavramlar">
+        <span class="has-mr-6">3.1</span>
+        <span>Önemli yeni kavramlar</span>
+        </a></li><li>
+        <a class="is-flex" href="#Uygulanmasi">
+        <span class="has-mr-6">3.2</span>
+        <span>Uygulanması</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Reuseable-Composition-Api">
+        <span class="has-mr-6">4</span>
+        <span>Reuseable Composition Api</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bitirirken">
+        <span class="has-mr-6">5</span>
+        <span>Bitirirken</span>
+        </a></li><li>
+        <a class="is-flex" href="#Kaynaklar">
+        <span class="has-mr-6">6</span>
+        <span>Kaynaklar</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Kategoriler
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/kategoriler/DevOps/">
+            <span class="level-start">
+                <span class="level-item">DevOps</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/kategoriler/Tips/">
+            <span class="level-start">
+                <span class="level-item">Tips</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/kategoriler/VueJs/">
+            <span class="level-start">
+                <span class="level-item">VueJs</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/kategoriler/Web-Components/">
+            <span class="level-start">
+                <span class="level-item">Web Components</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Etiket bulutu
+        </h3>
+        <a href="/etiketler/axios/" style="font-size: 10px;">axios</a> <a href="/etiketler/base64/" style="font-size: 10px;">base64</a> <a href="/etiketler/base64string/" style="font-size: 10px;">base64string</a> <a href="/etiketler/bilesen-iletisimi/" style="font-size: 10px;">bileşen iletişimi</a> <a href="/etiketler/compositionapi/" style="font-size: 10px;">compositionapi</a> <a href="/etiketler/githubactions/" style="font-size: 10px;">githubactions</a> <a href="/etiketler/image/" style="font-size: 10px;">image</a> <a href="/etiketler/interceptor/" style="font-size: 10px;">interceptor</a> <a href="/etiketler/lifecycle-methods/" style="font-size: 10px;">lifecycle methods</a> <a href="/etiketler/nuxtjs/" style="font-size: 10px;">nuxtjs</a> <a href="/etiketler/powershell/" style="font-size: 10px;">powershell</a> <a href="/etiketler/stenciljs/" style="font-size: 20px;">stenciljs</a> <a href="/etiketler/surgesh/" style="font-size: 10px;">surgesh</a> <a href="/etiketler/vuejs/" style="font-size: 15px;">vuejs</a> <a href="/etiketler/web-components/" style="font-size: 20px;">web components</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Son
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-10-22T09:31:12.000Z">22.10.2020</time></div>
+                    <a href="/powershell-ile-resimleri-base64-e-cevirme/" class="has-link-black-ter is-size-6">İpucu - Powershell ile Resimleri Base64&#39;e çevirme</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/Tips/">Tips</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-16T13:45:45.000Z">16.12.2019</time></div>
+                    <a href="/vue3-composition-api-inceleme/" class="has-link-black-ter is-size-6">Vue 3 - Composition Api İncelemesi</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/VueJs/">VueJs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T12:19:04.000Z">08.12.2019</time></div>
+                    <a href="/nuxtjs-uygulamanizi-github-actions-ile-surgesh-a-deploy-etme/" class="has-link-black-ter is-size-6">NuxtJs Uygulamanızı Github Actions ile Surge.sh’a Deploy Etme</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/DevOps/">DevOps</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T06:21:14.000Z">01.12.2019</time></div>
+                    <a href="/vuejs-ile-axios-kullanimi/" class="has-link-black-ter is-size-6">VueJs ile Axios Kullanımı</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/VueJs/">VueJs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T09:29:56.000Z">24.11.2019</time></div>
+                    <a href="/stencil-bilesen-yasam-dongusu/" class="has-link-black-ter is-size-6">Stencil Bileşen Yaşam Döngüsü</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/kategoriler/Web-Components/">Web Components</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Arşivler
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/arsiv/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">Ekim 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/arsiv/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">Aralık 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/arsiv/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">Kasım 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/arsiv/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">Mayıs 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiketler
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/axios/">
+                        <span class="tag">axios</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/base64/">
+                        <span class="tag">base64</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/base64string/">
+                        <span class="tag">base64string</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/bilesen-iletisimi/">
+                        <span class="tag">bileşen iletişimi</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/compositionapi/">
+                        <span class="tag">compositionapi</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/githubactions/">
+                        <span class="tag">githubactions</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/image/">
+                        <span class="tag">image</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/interceptor/">
+                        <span class="tag">interceptor</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/lifecycle-methods/">
+                        <span class="tag">lifecycle methods</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/nuxtjs/">
+                        <span class="tag">nuxtjs</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/powershell/">
+                        <span class="tag">powershell</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/stenciljs/">
+                        <span class="tag">stenciljs</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/surgesh/">
+                        <span class="tag">surgesh</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/vuejs/">
+                        <span class="tag">vuejs</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/etiketler/web-components/">
+                        <span class="tag">web components</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    heyoo
+                
+                </a> -->
+                <p class="is-size-7">
+                &copy; 2020 Selçuk Kütük&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank" rel="noreferrer">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noreferrer">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("tr");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="/css/bulma.min.css">
+<link rel="stylesheet" href="/css/all.min.css">
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Bir şeyler yaz...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Gönderiler',
+                PAGES: 'Sayfalar',
+                CATEGORIES: 'Kategoriler',
+                TAGS: 'Etiketler',
+                UNTITLED: '(Başlıksız)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
