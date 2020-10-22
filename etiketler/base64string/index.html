@@ -162,7 +162,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    bir dakika okuma süresi (Yaklaşık 194 kelime)
+                    bir dakika okuma süresi (Yaklaşık 192 kelime)
                 </span>
                 
                 
@@ -175,7 +175,7 @@
             
         </h1>
         <div class="content">
-            <p>Fırsat buldukça bu tür küçük ipuçlarını paylaşmaya çalışacağım. Bugün paylaştığım ipuçunun hikayesi ise şu. Elimde fotoğraflardı vardı ve test etmek için hızlıca base64’e çevirmem gerekiyordu. İnternet ortamındaki online çeviricilere yükleyemeyeceğim bir içerikti. Bende bunu powershell ile yapabilir miyim diye araştırdım ve birazcık ekleme ile aşağıdaki basit ama etkili :) script ortaya çıktı.</p>
+            <p>Fırsat buldukça bu tür küçük ipuçlarını paylaşmaya çalışacağım. Bu ipuçunun hikayesi ise şu. Elimde fotoğraflar vardı ve test etmek için hızlıca base64’e çevirmem gerekiyordu.<br>Çalıştığım resimler internet ortamındaki online çeviricilere yükleyemeyeceğim içeriklerdi. Bende bunu powershell ile yapabilir miyim diye araştırdım ve birazcık ekleme ile aşağıdaki basit ama etkili :) script ortaya çıktı.</p>
 <figure class="highlight powershell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">Param</span>([String]<span class="hljs-variable">$path</span>)</span><br><span class="line">[Convert]::ToBase64String([System.IO.File]::ReadAllBytes(<span class="hljs-variable">$path</span>))</span><br></pre></td></tr></table></figure>
 <p>Bu scripti bir .ps1 dosyası olarak kaydedin. Daha sonra aşağıdaki şekilde çağırdığımızda resmin yanında base64 string’ini içeren bir text dosyası oluşacaktır.</p>
 <figure class="highlight powershell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\sample\Desktop\example&gt; .\b64.ps1 .\input.jpeg &gt; output.txt</span><br></pre></td></tr></table></figure>
@@ -728,7 +728,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
