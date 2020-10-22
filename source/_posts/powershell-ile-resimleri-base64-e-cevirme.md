@@ -10,7 +10,8 @@ tags:
   - base64string
 ---
 
-Fırsat buldukça bu tür küçük ipuçlarını paylaşmaya çalışacağım. Bugün paylaştığım ipuçunun hikayesi ise şu. Elimde fotoğraflardı vardı ve test etmek için hızlıca base64'e çevirmem gerekiyordu. İnternet ortamındaki online çeviricilere yükleyemeyeceğim bir içerikti. Bende bunu powershell ile yapabilir miyim diye araştırdım ve birazcık ekleme ile aşağıdaki basit ama etkili :) script ortaya çıktı.
+Fırsat buldukça bu tür küçük ipuçlarını paylaşmaya çalışacağım. Bu ipuçunun hikayesi ise şu. Elimde fotoğraflar vardı ve test etmek için hızlıca base64'e çevirmem gerekiyordu. 
+Çalıştığım resimler internet ortamındaki online çeviricilere yükleyemeyeceğim içeriklerdi. Bende bunu powershell ile yapabilir miyim diye araştırdım ve birazcık ekleme ile aşağıdaki basit ama etkili :) script ortaya çıktı.
 
 ```powershell
 Param([String]$path)
