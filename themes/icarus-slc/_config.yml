@@ -216,7 +216,7 @@ plugins:
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Google-Analytics
     google-analytics:
         # Google Analytics tracking id
-        tracking_id: UA-30109784-1
+        tracking_id: G-FGVC1LSCSX
     matomo: false
     # Baidu Analytics plugin settings
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/site-analytics-plugin/#Baidu-Analytics

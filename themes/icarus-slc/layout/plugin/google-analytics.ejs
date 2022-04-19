@@ -1,10 +1,12 @@
 <% if (head && get_config_from_obj(plugin, 'tracking_id')) { %>
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<%= get_config_from_obj(plugin, 'tracking_id') %>"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    gtag('config', '<%= get_config_from_obj(plugin, 'tracking_id') %>');
+  gtag('config', '<%= get_config_from_obj(plugin, 'tracking_id') %>');
 </script>
+<!-- End Google Analytics -->
 <% } %>
